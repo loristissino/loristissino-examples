@@ -1,0 +1,4 @@
+$ ./counter14 30 20
+scambio
+Sono un contatore, mi chiamo 'untitled', vado da 20 a 30.
+

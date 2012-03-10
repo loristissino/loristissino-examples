@@ -1,0 +1,29 @@
+# Programmazione orientata agli oggetti
+
+## Concetti base
+
+* Incapsulamento
+* Polimorfismo
+* Ereditarietà
+
+## Altri concetti importanti
+
+* Ereditarietà multipla (derivazione da più classi) -- `c++`, `python`
+* Interfacce (implementazione solo di metodi specifici) -- `java`, `c#`, `php`
+* _Derivazione_ vs _Estensione_
+* Livelli di accesso: _private_ / _protected_ / _public_
+* _Overloading_ (polimorfismo funzionale): funzioni riconosciute non dal nome ma dalla _firma_ (lista/tipi parametri: _signature_)
+* _Overriding_: ridefinzione di una funzione in una classe derivata
+
+## Cose che possono tornare utili
+
+* Possibilità di ridefinire operatori
+* Concetti simili ma non sovrapponibili:
+	- proprietà
+	- dati privati
+	- _setters_/_getters_
+* Classi astratte
+* Metodi astratti
+* Metodi statici
+* ORM (_Object-Relational Mappers_)
+

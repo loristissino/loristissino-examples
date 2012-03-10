@@ -1,0 +1,21 @@
+$ ./counter15 20 30
+creo contatore n. 1...
+Sono un contatore, mi chiamo 'untitled', vado da 20 a 30.
+fatto!
+creo contatore n. 2...
+Sono un contatore, mi chiamo 'untitled', vado da 20 a 30.
+fatto!
+creo contatore n. 3...
+Sono un contatore, mi chiamo 'untitled', vado da 20 a 30.
+fatto!
+creo contatore n. 4...
+Sono un contatore, mi chiamo 'untitled', vado da 20 a 30.
+fatto!
+creo contatore n. 5...
+Sono un contatore, mi chiamo 'untitled', vado da 20 a 30.
+fatto!
+creo contatore n. 6...
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Aborted
+
