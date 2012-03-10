@@ -81,9 +81,9 @@ int main(int argc, char **argv)
 	
 	c.init(min, max);
 	
-	cout << "Ho un contatore da " << c.getMin() << " a " << c.getMax() << "." << endl;
+	cout << "Ho un contatore che va da " << c.getMin() << " a " << c.getMax() << "." << endl;
 	
-	c.name="Mycounter";
+	c.name="MicroWaveCounter";
 	
 	cout << "Il contatore si chiama " << c.name << "." << endl;
 	

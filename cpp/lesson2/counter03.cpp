@@ -77,7 +77,7 @@ int main(int argc, char **argv)
 		return 4;
 	}
 	
-	cout << "Ho un contatore da " << c.getMin() << " a " << c.getMax() << "." << endl;
+	cout << "Ho un contatore che va da " << c.getMin() << " a " << c.getMax() << "." << endl;
 	
 }
 

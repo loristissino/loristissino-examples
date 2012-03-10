@@ -93,12 +93,12 @@ int main(int argc, char **argv)
 	
 	c.init(min, max);
 	
-	cout << "Ho un contatore da " << c.getMin() << " a " << c.getMax() << "." << endl;
+	cout << "Ho un contatore che va da " << c.getMin() << " a " << c.getMax() << "." << endl;
 	
 	c.setMin(2);
 	c.setMax(c.getMax()+10);
 
-	cout << "Ho un contatore da " << c.getMin() << " a " << c.getMax() << "." << endl;
+	cout << "Ho un contatore che va da " << c.getMin() << " a " << c.getMax() << "." << endl;
 	
 	c.count();
 	

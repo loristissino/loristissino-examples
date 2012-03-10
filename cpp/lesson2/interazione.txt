@@ -1,0 +1,218 @@
+$ ./counter01 10 20
+10
+
+
+
+$ ./counter01 ABC
+conversione fallita
+
+
+
+
+$ ./counter02 10 20
+10 (19), 11 (18), 12 (17), 13 (16), 14 (15), 15 (14), 16 (13), 17 (12), 18 (11), 19 (10), 20
+
+
+
+
+
+$ ./counter03 ABC DEF
+limite inferiore non valido
+$ ./counter03 
+Uso: ./counter03 *lim_min*  *lim_max*
+
+
+
+
+
+
+$ ./counter03 10 20
+Ho un contatore che va da 10 a 20.
+
+
+
+
+
+
+
+$ ./counter04 10 20
+Ho un contatore che va da 10 a 20.
+Il contatore si chiama MicroWaveCounter.
+
+
+
+
+
+
+
+$ ./counter05 10 20
+Ho un contatore che va da 10 a 20.
+Il contatore si chiama MicroWaveCounter.
+10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+
+
+
+
+
+
+
+$ ./counter06 10 20
+Ho un contatore che va da 10 a 20.
+DEBUG: impostato il minimo a 2
+DEBUG: impostato il massimo a 30
+Ho un contatore che va da 2 a 30.
+2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+
+
+
+
+
+
+$ ./counter07 10 20
+DEBUG: vengo automaticamente invocato, sono il 'costruttore'.
+DEBUG: inizializzazione.
+Ho un contatore che va da 10 a 20.
+DEBUG: impostato il minimo a 2
+DEBUG: impostato il massimo a 30
+Ho un contatore che va da 2 a 30.
+2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'.
+
+
+
+
+
+
+
+$ ./counter08 10 20 
+DEBUG: vengo automaticamente invocato, sono il 'costruttore'.
+DEBUG: inizializzazione.
+Ho un contatore che va da 11 a 21.
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'.
+DEBUG: vengo automaticamente invocato, sono il 'costruttore'.
+DEBUG: inizializzazione.
+Ho un contatore che va da 12 a 22.
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'.
+DEBUG: vengo automaticamente invocato, sono il 'costruttore'.
+DEBUG: inizializzazione.
+Ho un contatore che va da 13 a 23.
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'.
+
+
+
+
+
+
+
+$ ./counter09 10 20
+DEBUG: vengo automaticamente invocato, sono il 'costruttore'.
+DEBUG: inizializzazione.
+Ho un contatore che va da 11 a 21.
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'.
+DEBUG: vengo automaticamente invocato, sono il 'costruttore'.
+DEBUG: inizializzazione.
+Ho un contatore che va da 12 a 22.
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'.
+DEBUG: vengo automaticamente invocato, sono il 'costruttore'.
+DEBUG: inizializzazione.
+Ho un contatore che va da 13 a 23.
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'.
+DEBUG: sono un costruttore 'alternativo'.
+DEBUG: inizializzazione.
+Ho un contatore che va da 10 a 20.
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'.
+
+
+
+
+
+
+
+$ ./counter10 10 20
+DEBUG: vengo automaticamente invocato, sono il 'costruttore'.
+DEBUG: inizializzazione.
+Sono un contatore, mi chiamo 'untitled', vado da 11 a 21.
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'.
+DEBUG: vengo automaticamente invocato, sono il 'costruttore'.
+DEBUG: inizializzazione.
+Sono un contatore, mi chiamo 'untitled', vado da 12 a 22.
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'.
+DEBUG: vengo automaticamente invocato, sono il 'costruttore'.
+DEBUG: inizializzazione.
+Sono un contatore, mi chiamo 'untitled', vado da 13 a 23.
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'.
+DEBUG: sono un costruttore 'alternativo'.
+DEBUG: inizializzazione.
+Sono un contatore, mi chiamo 'untitled', vado da 10 a 20.
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'
+
+
+
+
+
+
+$ ./counter11 10 20
+DEBUG: vengo automaticamente invocato, sono il 'costruttore'.
+DEBUG: _init()
+DEBUG: inizializzazione.
+Sono un contatore, mi chiamo 'untitled', vado da 11 a 21.
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'.
+DEBUG: vengo automaticamente invocato, sono il 'costruttore'.
+DEBUG: _init()
+DEBUG: inizializzazione.
+Sono un contatore, mi chiamo 'untitled', vado da 12 a 22.
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'.
+DEBUG: vengo automaticamente invocato, sono il 'costruttore'.
+DEBUG: _init()
+DEBUG: inizializzazione.
+Sono un contatore, mi chiamo 'untitled', vado da 13 a 23.
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'.
+DEBUG: sono un costruttore 'alternativo'.
+DEBUG: inizializzazione.
+DEBUG: _init()
+Sono un contatore, mi chiamo 'untitled', vado da 10 a 20.
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'.
+$ ./counter11 10 20^C
+$ 
+
+
+
+
+
+
+
+$ ./counter12 10 20
+DEBUG: sono un costruttore 'alternativo'.
+DEBUG: inizializzazione.
+DEBUG: _init()
+Sono un contatore, mi chiamo 'untitled', vado da 10 a 20.
+10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+DEBUG: impostato il minimo a 110
+DEBUG: impostato il massimo a 120
+DEBUG: impostato il nome a Foo
+Sono un contatore, mi chiamo 'Foo', vado da 110 a 120.
+110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'.
+
+
+
+
+
+
+$ ./counter13 10 20
+DEBUG: sono un costruttore 'alternativo'.
+DEBUG: inizializzazione.
+DEBUG: _init()
+Sono un contatore, mi chiamo 'untitled', vado da 10 a 20.
+10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+DEBUG: impostato il nome a Foo
+Sono un contatore, mi chiamo 'Foo', vado da 10 a 20.
+Sono un contatore, mi chiamo 'Foo', vado da 10 a 20.
+10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+DEBUG: impostato il nome a Bar
+Sono un contatore, mi chiamo 'Bar', vado da 10 a 20.
+DEBUG: vengo automaticamente invocato, sono il 'distruttore'.
+
+
+
+

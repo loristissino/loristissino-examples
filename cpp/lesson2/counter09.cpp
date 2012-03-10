@@ -111,11 +111,11 @@ int main(int argc, char **argv)
 	{
 		Counter c = Counter();
 		c.init(min+i, max+i);
-		cout << "Ho un contatore da " << c.getMin() << " a " << c.getMax() << "." << endl;
+		cout << "Ho un contatore che va da " << c.getMin() << " a " << c.getMax() << "." << endl;
 	}
 	
 	Counter k = Counter(min, max);
-	cout << "Ho un contatore da " << k.getMin() << " a " << k.getMax() << "." << endl;
+	cout << "Ho un contatore che va da " << k.getMin() << " a " << k.getMax() << "." << endl;
 	
 	
 	
