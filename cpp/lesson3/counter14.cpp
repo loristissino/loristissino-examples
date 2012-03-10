@@ -106,7 +106,7 @@ class Counter
 			swapv3(min, max);
 			cout << "scambio" << endl;
 		}
-*/
+    */
 		_min = min;
 		_max = max;
 	}

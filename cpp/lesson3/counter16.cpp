@@ -27,9 +27,6 @@ bool int_from_string(int &v, const std::string& s, std::ios_base& (*f)(std::ios_
 
 void swapv3(int &a, int &b)
 {
-	/* i parametri sono riferimenti a variabili; la funzione chiamante
-	deve passare normalmente le variabili; all'interno del codice 
-	usiamo i parametri come se fossero normali variabili */
 	int c=a;
 	a=b;
 	b=c;

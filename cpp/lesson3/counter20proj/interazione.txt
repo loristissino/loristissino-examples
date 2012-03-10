@@ -1,0 +1,11 @@
+$ ./counter 10 20
+Sono un contatore, mi chiamo 'STACKCOUNTER', vado da 0 a 0.
+Sono un contatore, mi chiamo 'STACKCOUNTER', vado da 1 a 1.
+Sono un contatore, mi chiamo 'STACKCOUNTER', vado da 2 a 2.
+Sono un contatore, mi chiamo 'STACKCOUNTER', vado da 1 a 1.
+Sono un contatore, mi chiamo 'STACKCOUNTER', vado da 0 a 0.
+Sono un contatore, mi chiamo 'STACKCOUNTER', vado da -1 a -1.
+Sono un contatore, mi chiamo 'STACKCOUNTER', vado da -2 a -2.
+posizione: 1
+Sono un contatore, mi chiamo 'untitled', vado da 0 a 0.
+posizione: 2
