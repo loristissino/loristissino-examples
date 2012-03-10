@@ -7,9 +7,14 @@ possono essere scritti così */
 
 int main()
 {
-	cout << "Hello, world! (1)" << endl << "sdsdgfdfg" << endl << "fgfxg" << endl;
-	//std::cout << "Hello, world! (2)" << std::endl; 
-	// in alternativa, se non si scrive "using namespace std;" in alto
+	cout << "Hello, world! (1)" << endl;
+  
+  /* si sarebbe potuto scrivere
+    
+  std::cout << "Hello, world! (2)" << std::endl; 
+    
+   * se non si fosse usato il namespace std
+   */
 }
 
 

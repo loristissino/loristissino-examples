@@ -12,7 +12,8 @@ int main(int argc, char **argv)
 	{
 		cout << i << ": " << argv[i] << " (" << k << " alla fine)" << endl;
 	}
-	cout << "Se i parametri non sono tre (compreso il programma), usciamo con errore" << endl;
+
+  // Se i parametri non sono tre (compreso il programma), usciamo con errore 
 	
 	return (argc==3) ? 0 : 1; // zucchero sintattico...
 

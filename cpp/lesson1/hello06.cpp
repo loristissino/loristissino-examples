@@ -12,7 +12,9 @@ int main(int argc, char **argv)
 	{
 		cout << i << ": " << argv[i] << endl;
 	}
-	cout << "Se i parametri non sono tre (compreso il programma), usciamo con errore" << endl;
+
+  // Se i parametri non sono tre (compreso il programma), usciamo con errore 
+
 	if (argc==3)
 	{
 		return 0;

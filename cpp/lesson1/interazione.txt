@@ -1,0 +1,76 @@
+$ ./hello01 
+Hello, world! (1)
+
+
+
+$ ./hello02 
+Hello, world
+1.23
+
+
+
+$ ./hello03 
+Inserisci un numero:
+6.456789123
+6.457
+
+
+
+
+$ ./hello04
+Inserisci un numero:
+6.3456789
+Inserisci una stringa:
+ABC
+6.346
+ABC
+
+
+
+
+
+$ ./hello05
+Parametri passati sulla riga di comando: 1
+0: ./hello05
+
+
+
+
+$ ./hello05 primo secondo "terzo con spazi" quarto
+Parametri passati sulla riga di comando: 5
+0: ./hello05
+1: primo
+2: secondo
+3: terzo con spazi
+4: quarto
+
+
+
+
+
+$ ./hello06 
+Parametri passati sulla riga di comando: 1
+0: ./hello06
+Se i parametri non sono tre (compreso il programma), usciamo con errore
+
+$ echo $?
+1
+
+
+
+$ ./hello06 primo secondo
+Parametri passati sulla riga di comando: 3
+0: ./hello06
+1: primo
+2: secondo
+
+$ echo $?
+0
+
+
+$ ./hello07 uno due tre
+Parametri passati sulla riga di comando: 4
+0: ./hello07 (3 alla fine)
+1: uno (2 alla fine)
+2: due (1 alla fine)
+3: tre (0 alla fine)
