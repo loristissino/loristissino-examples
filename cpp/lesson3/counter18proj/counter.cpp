@@ -45,6 +45,7 @@ bool Counter::init(int min, int max)
 	}
 	_min = min;
 	_max = max;
+  return true;
 }
 	
 int Counter::getMin()
