@@ -1,4 +1,8 @@
 eserciziofinale.cpp
 *.o
 *.pdb
+*.exe
+bin/
+obj/
+
 
