@@ -1,2 +1,4 @@
 eserciziofinale.cpp
 *.o
+*.pdb
+
