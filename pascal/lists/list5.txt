@@ -1,0 +1,19 @@
+aggiunto elemento 1
+aggiunto elemento 2
+aggiunto elemento 3
+aggiunto elemento 4
+aggiunto elemento 5
+aggiunto elemento 6
+aggiunto elemento 7
+aggiunto elemento 8
+aggiunto elemento 9
+aggiunto elemento 10
+aggiunto elemento 11
+aggiunto elemento 12
+aggiunto elemento 13
+aggiunto elemento 14
+Runtime error 203 at $0805A233
+  $0805A233
+  $08048426
+  $0805FA87
+

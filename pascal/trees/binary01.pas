@@ -1,0 +1,103 @@
+program binary01(Input,Output);
+
+{
+  * implementazione di un albero binario in cui vogliamo mantenere 
+  * l'ordinamento
+  * }
+  
+   CONST
+    SPACECHAR=' ';
+    DIM = 20;
+
+   TYPE
+      TTree=^TNode;
+      TNode=record
+        value: longint;
+        left:TTree;
+        right:TTree;
+      end;
+      TSampleArray=Array[1..DIM] of longint;
+
+   var
+      t: TTree;
+      v: TSampleArray;
+      
+   procedure initTree(var t:TTree);
+      begin
+      	t:=NIL;
+      end;
+       
+   procedure initSampleArray(var v: TSampleArray);
+   var i: integer;
+   begin
+    for i:=1 to DIM do
+        v[i]:=random(9000)+1000;
+   end;
+      
+ 
+   procedure space(number: integer);
+   var i: integer;
+   begin
+    for i:=1 to number do
+      write(SPACECHAR);
+   end;
+   
+   procedure process(t: TTree; level: integer);
+   begin
+    space(level);
+    writeln(t^.value);
+   end;
+   
+   
+  procedure _insertItem(var t: TTree; n: TTree);
+  begin
+    if t=nil then
+      begin
+        t:=n;
+        writeln('!');
+      end
+    else
+      begin
+        if n^.value > t^.value then
+          begin
+            write('R');
+            _insertItem(t^.right, n);
+          end
+        else
+          begin
+            write('L');
+            _insertItem(t^.left, n);
+          end;
+      end;
+  end;
+ 
+  procedure insertItem(var t: TTree; v: longint);
+  var
+    n: TTree;
+  begin
+    writeln('#debug: inserisco ', v, '...');
+    new(n);
+    n^.value:=v;
+    n^.left:=nil;
+    n^.right:=nil;
+    _insertItem(t, n);
+  end;
+   
+  procedure loadSampleArray(var v: TSampleArray; var t: TTree);
+  var i: integer;
+  begin
+    for i:=1 to DIM do
+      begin
+        insertItem(t, v[i]);
+      end;
+  end;
+
+
+   begin {main}
+    {randomize;}
+    initTree(t);
+    initSampleArray(v);
+    
+    loadSampleArray(v, t);
+   
+   end.

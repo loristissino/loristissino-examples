@@ -1,0 +1,11 @@
+==== LISTA COMPLETA ====
+Nome:    Bruno
+Cognome: Bertoli
+Età:     22
+C'è qualcuno dopo...
+-------------------------------
+Nome:    Alice
+Cognome: Alessandrini
+Età:     21
+Ultimo della lista.
+-------------------------------

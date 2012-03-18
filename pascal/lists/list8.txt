@@ -1,0 +1,6 @@
+Sono stati inseriti 4 elementi.
+==== ELIMINAZIONE ELEMENTI DELLA LISTA ====
+Debug: elimino un elemento
+Debug: elimino un elemento
+Debug: elimino un elemento
+Debug: elimino un elemento

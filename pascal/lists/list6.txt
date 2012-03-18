@@ -1,0 +1,16 @@
+==== LISTA COMPLETA ====
+Nome:    Carlo
+Cognome: Carlucci
+Età:     23
+C'è qualcuno dopo...
+-------------------------------
+Nome:    Bernardo
+Cognome: Bettin
+Età:     22
+C'è qualcuno dopo...
+-------------------------------
+Nome:    Alice
+Cognome: Alessandrini
+Età:     21
+Ultimo della lista.
+-------------------------------

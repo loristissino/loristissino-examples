@@ -1,0 +1,22 @@
+Sono stati inseriti 4 elementi.
+==== LISTA INVERTITA ====
+Nome:    Nome1
+Cognome: Cognome1
+Età:     11
+Ultimo della lista.
+-------------------------------
+Nome:    Nome2
+Cognome: Cognome2
+Età:     12
+C'è qualcuno dopo...
+-------------------------------
+Nome:    Nome3
+Cognome: Cognome3
+Età:     13
+C'è qualcuno dopo...
+-------------------------------
+Nome:    Nome4
+Cognome: Cognome4
+Età:     14
+C'è qualcuno dopo...
+-------------------------------

@@ -1,0 +1,6 @@
+#!/bin/bash
+php text.txt > book.pandoc.txt
+markdown2pdf book.pandoc.txt -o gestioneListe.pdf
+pandoc -w html -s -o gestioneListe.html book.pandoc.txt
+zip sorgenti.zip *.pas
+

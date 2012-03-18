@@ -1,0 +1,11 @@
+Inserisci il nome:
+Mario
+Inserisci il cognome:
+Rossi
+Inserisci l'età:
+21
+Nome:    Mario
+Cognome: Rossi
+Età:     21
+Ultimo della lista.
+-------------------------------
