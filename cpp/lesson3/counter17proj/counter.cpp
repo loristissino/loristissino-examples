@@ -1,11 +1,11 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <sstream>
+#include <stdexcept>
+
 #include "counter.h"
-
-#ifndef FUNCTIONS
-#define FUNCTIONS
 #include "functions.h"
-#endif
-
-#define UNTITLED "untitled"
 
 using namespace std;
 

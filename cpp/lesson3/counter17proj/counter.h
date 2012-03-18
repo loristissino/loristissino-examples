@@ -1,48 +1,43 @@
-#include <iostream>
-#include <iomanip>
-#include <string>
-#include <sstream>
-#include <stdexcept>
-
 #define UNTITLED "untitled"
 
-using namespace std;
-
+#ifndef COUNTER_H
+#define COUNTER_H
 
 class Counter
 {
 	private:
-		int _min, _max;
+    int _min, _max;
 	
-	void _init();
+    void _init();
 	
 	public:
-		string name;
+		std::string name;
 	
-	Counter();
+    Counter();
 	
-	Counter(int min, int max);
+    Counter(int min, int max);
 	
-	~Counter();
+    ~Counter();
 	
-	string toString();
+    std::string toString();
 	
-	bool init(int min, int max);
+    bool init(int min, int max);
 	
-	int getMin();
+    int getMin();
 	
-	int getMax();
+    int getMax();
 
-	Counter  &setMin(int v);
+    Counter  &setMin(int v);
 	
-	Counter  &setMax(int v);
+    Counter  &setMax(int v);
 	
-	Counter &setName(string v);
+    Counter &setName(std::string v);
 	
-	Counter &count();
+    Counter &count();
 	
-	Counter &display();
+    Counter &display();
 	
 };
 
+#endif
 

@@ -4,10 +4,9 @@
 #include <stdexcept>
 
 #include "counter.h"
-#ifndef FUNCTIONS
-#define FUNCTIONS
 #include "functions.h"
-#endif
+
+using namespace std;
 
 int main(int argc, char **argv)
 {

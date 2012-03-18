@@ -1,11 +1,11 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <sstream>
+#include <stdexcept>
+
 #include "counter.h"
-
-#ifndef FUNCTIONS
-#define FUNCTIONS
 #include "functions.h"
-#endif
-
-#define UNTITLED "untitled"
 
 using namespace std;
 
@@ -39,7 +39,7 @@ Counter::~Counter()
 	
 string Counter::toString()
 {
-	std::stringstream s;
+	stringstream s;
 	s << "Sono un contatore, mi chiamo '" << name << "', vado da " << getMin() << " a " << getMax() << ".";
 	return s.str();
 	

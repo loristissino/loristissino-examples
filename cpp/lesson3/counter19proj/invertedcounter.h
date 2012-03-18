@@ -1,18 +1,7 @@
-#include <iostream>
-#include <iomanip>
-#include <string>
-#include <sstream>
-#include <stdexcept>
+#ifndef INVERTED_COUNTER_H
+#define INVERTED_COUNTER_H
 
-#ifndef COUNTER_
-#define COUNTER_
 #include "counter.h"
-#endif
-
-#define UNTITLED "untitled"
-
-using namespace std;
-
 
 class InvertedCounter: public Counter
 {
@@ -21,9 +10,9 @@ class InvertedCounter: public Counter
 	
 		InvertedCounter(int min, int max);
 
-		string toString();
-		string toStringNV();
+		std::string toString();
+		std::string toStringNV();
 		Counter &count();
 };
 
-
+#endif

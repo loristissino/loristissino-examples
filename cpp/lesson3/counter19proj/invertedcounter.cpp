@@ -1,11 +1,11 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <sstream>
+#include <stdexcept>
+
 #include "invertedcounter.h"
-
-#ifndef FUNCTIONS
-#define FUNCTIONS
 #include "functions.h"
-#endif
-
-#define UNTITLED "untitled"
 
 using namespace std;
 
@@ -23,7 +23,7 @@ InvertedCounter::InvertedCounter(int min, int max)
 
 string InvertedCounter::toString()
 {
-	std::stringstream s;
+	stringstream s;
 	s << "Sono un contatore inverso, mi chiamo '" << name << "', vado da " << getMax() << " a " << getMin() << ".";
 	return s.str();
 	
@@ -31,7 +31,7 @@ string InvertedCounter::toString()
 	
 string InvertedCounter::toStringNV()
 {
-	std::stringstream s;
+	stringstream s;
 	s << "Sono un contatore inverso, mi chiamo '" << name << "', vado da " << getMax() << " a " << getMin() << ".";
 	return s.str();
 	

@@ -3,22 +3,13 @@
 #include <string>
 #include <stdexcept>
 
-#ifndef COUNTER_
-#define COUNTER_
 #include "counter.h"
-#endif
-
-#ifndef INVERTEDCOUNTER_
-#define INVERTEDCOUNTER_
 #include "invertedcounter.h"
-#endif
-
-#ifndef FUNCTIONS
-#define FUNCTIONS
 #include "functions.h"
-#endif
 
 #define COUNTERS 6
+
+using namespace std;
 
 int main(int argc, char **argv)
 {
