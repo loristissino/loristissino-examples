@@ -1,0 +1,11 @@
+# Si può creare un'immagine in formato png con il seguente comando:
+# neato mappa.dot -Tpng -Goverlap=false -o mappa.png
+# Altre informazioni e il manuale completo su http://www.graphviz.org
+
+graph G {
+  tarvisio -- gemona -- udine -- latisana;
+  gorizia -- villesse;
+  venezia -- portogruaro -- latisana -- villesse -- monfalcone -- trieste;
+  venezia -- treviso -- conegliano -- belluno;
+  portogruaro -- pordenone -- conegliano;
+}
