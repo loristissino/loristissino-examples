@@ -7,7 +7,7 @@
  * 
  *     A      B     C                   D               F        G
  * Selected	Sent	Name	          Email-address	     %field1%  %field2%
- *        1    0	Giuseppe Verdi	gv@example.com     v1        v2
+ *        1    0  Giuseppe Verdi  gv@example.com     v1        v2
  *        1    0  Maria Rossi     mr@example.com     v3        v4
  * 
  * Only the rows with a 1 in column A are considered.
@@ -17,9 +17,9 @@
  * In the Configuration sheet there must be something like:
  * 
  *    A                     B
- * Bcc	    myaddress@example.com
- * Subject	News for you, %field1%!
- * Body	    Hi, this is a sample, with custom values, like %field2%
+ * Bcc      myaddress@example.com
+ * Subject  News for you, %field1%!
+ * Body     Hi, this is a sample, with custom values, like %field2%
  * 
  * Multiple line bodies are allowed in Google Apps spreadsheet
  * Just use ctrl-enter to have a new line.
