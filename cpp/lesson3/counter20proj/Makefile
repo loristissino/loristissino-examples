@@ -9,7 +9,7 @@ all: $(EXECUTABLE)
 .c.o:
 	$(CC) $(CFLAGS) $*.c -o $@
 
-counter: $(FILES)
+$(EXECUTABLE): $(FILES)
 	$(CC)	$(FILES) -o $(EXECUTABLE)
 
 clean:
