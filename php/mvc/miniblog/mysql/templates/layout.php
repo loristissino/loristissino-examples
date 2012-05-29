@@ -3,11 +3,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Mini blog :: <?php echo $title ?></title>
+<?php if(isset($refresh)): ?>
+<meta http-equiv="refresh" content="5;url=<?php echo $refresh ?>">
+<?php endif ?>
 </head>
 <body>
 <h1><?php echo $title ?></h1>
 <?php include('templates/' . $template . '.php') ?>
 <hr />
+<?php if($action!='new'): ?>
+  <p><a href="?action=new">Nuovo post</a></p>
+  <hr />
+<?php endif ?>
 <p>Test:</p>
 <ul>
 <li><a href="?action=foo">Azione non consentita</a></li>
