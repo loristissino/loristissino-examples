@@ -45,17 +45,26 @@ function posts_list()
    return $posts;
 }
 
-function find_post($slug)
+function find_post($value, $by_slug=true)
 {
    $conn=getDBConnection();
-   $query=sprintf("SELECT title, content FROM posts WHERE slug='%s';", $slug);
+   if($by_slug)
+   {
+     $query=sprintf("SELECT id, title, slug, content FROM posts WHERE slug='%s';", $value);
+   }
+   else
+   {
+     $query=sprintf("SELECT id, title, slug, content FROM posts WHERE id=%d;", $value);
+   }
    $result = $conn->query($query);
 
    $row = $result->fetch_array();
    if($row)
    {
      $post = array(
+       'id'=>$row['id'],
        'title'=>$row['title'],
+       'slug'=>$row['slug'],
        'content'=>explode("\n",$row['content'])
        );
    }
@@ -66,6 +75,28 @@ function find_post($slug)
    return $post;
 
 }
+
+function save_post($parameters=array())
+{
+  $conn=getDBConnection();
+  $query=sprintf('INSERT INTO posts (title, slug, content) VALUES ("%s", "%s", "%s")',
+    $parameters['title'],
+    $parameters['slug'],
+    $parameters['content']
+    );
+
+  return $conn->query($query); // restituisce vero o falso a seconda che l'inserimento riesca o meno
+}
+
+function delete_post($id)
+{
+  $conn=getDBConnection();
+  $query=sprintf('DELETE FROM posts WHERE id = %d', $id);
+
+  return $conn->query($query); // restituisce vero o falso a seconda che l'inserimento riesca o meno
+}
+
+
 // END MODEL
 
 
@@ -76,6 +107,8 @@ $action=isset($_GET['action'])?$_GET['action']:'list';
 $template=$action;
 // per default, il nome del template corrisponde a quello dell'azione
 // ma potrebbe essere cambiato, come nel caso di documento non esistente
+
+$method=$_SERVER["REQUEST_METHOD"];
 
 switch ($action)
 {
@@ -94,6 +127,49 @@ switch ($action)
        {
          $title='Documento inesistente';
          $template='filenotfound';
+       }
+       break;
+   case 'delete':
+       $id=$_GET['id'];
+       if($method=='POST')
+       {
+         if(delete_post($id))
+         {
+           $template='delete_success';
+           $refresh='?action=list';
+         }
+         else
+         {
+           $template='delete_failure';
+           $refresh='?action=list';
+         }
+         break;
+       }
+       $post=find_post($id, false);
+       if ($post)
+       {
+         $title=$post['title'];
+       }
+       else
+       {
+         $title='Documento inesistente';
+         $template='filenotfound';
+       }
+       break;
+   case 'new':
+       if($method=='POST')
+       {
+         if(save_post($_POST))
+         {
+           $slug=$_POST['slug'];
+           $template='new_success';
+           $refresh='?action=list';
+         }
+         else
+         {
+           $template='new_failure';
+           $refresh='?action=list';
+         }
        }
        break;
    default:
