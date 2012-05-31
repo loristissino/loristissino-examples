@@ -1,0 +1,17 @@
+SOURCEVIDEO=/home/loris/Scrivania/smr/bigbuckbunny01.avi
+TARGETVIDEO=/home/loris/Scrivania/smr/bigbuckbunny01_out.avi
+
+SWIDTH=854
+SHEIGHT=480
+
+STOP=0
+SLEFT=0
+
+TTOP=40
+TLEFT=120
+
+TWIDTH=356
+THEIGHT=200
+
+FPS=25
+
