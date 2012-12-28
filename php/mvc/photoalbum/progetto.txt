@@ -1,0 +1,35 @@
+http://dfgsdg/dfgg/?action=list
+elenco foto
+
+http://dfgsdg/dfgg?action=list&category=mountain
+elenco foto della categoria montagna
+
+http://dfgsdg/dfgg/?action=preview
+foto in miniatura
+
+http://dfgsdg/dfgg/?action=show&file=primo.png
+foto primo.png
+
+http://dfgsdg/dfgg/?action=details&file=primo.png
+dettagli sulla foto primo.png
+
+http://dfgsdg/dfgg/images/primo.png
+
+PhotoAlbum
+  list()
+  listByCategory($category)
+  addPicture(Picture $pic)
+  getBasicPath()
+  setBasicPath($v)
+ 
+
+Picture
+  getInfo()
+  getSize()
+  getPath()
+  render()
+  getHTTPHeader()
+  
+
+
+
