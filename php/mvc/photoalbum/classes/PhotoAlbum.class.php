@@ -1,17 +1,31 @@
 <?php
 
-  /* Questa classe rappresenta un album fotografico.
-   * Viene istanziata con un valore che specifica la directory in cui 
-   * si trovano le fotografie.
-   * Questo può essere cambiato una volta che si sposterà la gestione
-   * delle fotografie nel database.
+  /**
+   * An instance of this class represents an album of pictures.
+   *
+   * @author Loris Tissino <loris.tissino@mattiussilab.net>
    */
   class PhotoAlbum
   {
+    // Questa classe rappresenta un album fotografico.
+    // Viene istanziata con un valore che specifica la directory in cui 
+    // si trovano le fotografie.
+    // Questo può essere cambiato una volta che si sposterà la gestione
+    // delle fotografie nel database.
+    // 
+
+
+    /**
+    * The database handler
+    *
+    * @var PDO
+    */    
+    private $dbh;
 	  
 	  function __construct($basepath)
 	  {
 		  $this->basepath = $basepath;
+      $this->dbh = $GLOBALS['dbh'];
 	  }
 	  function getPictures()
 	  {
@@ -55,13 +69,11 @@
 	  {
       // restituisce le categorie, eseguendo una query nel database
       
-		  global $dbh;
-		  
 		  $sql = "SELECT * FROM categories";
 		  
 		  $result=array();
 
-		  foreach($dbh->query($sql, PDO::FETCH_OBJ) as $obj)
+		  foreach($this->dbh->query($sql, PDO::FETCH_OBJ) as $obj)
 		  {
 			  $result[]=$obj;
 		  }
