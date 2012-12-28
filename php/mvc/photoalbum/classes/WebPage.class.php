@@ -1,14 +1,35 @@
 <?php 
-
-  /* Questa classe rappresenta una pagina web, in cui si possono impostare
-   * dei valori per il titolo, il template da usare, ecc. e fare l'output.
-   * È solo un abbozzo, il codice può essere integrato a seconda delle 
-   * esigenze...
+  
+  /**
+   * An instance of this class represents a web page.
+   *
+   * <code>
+   * // example
+   * $page = new WebPage();
+   * $page->setTitle('Example');
+   * echo $page;
+   * </code>
+   *
+   * @author Loris Tissino <loris.tissino@mattiussilab.net>
    */
 
   class WebPage
   {
-	
+    
+    /**
+    * The title of the page
+    *
+    * @var string
+    */
+    private $title;
+
+
+    /**
+     * Creates an instance, optionally with an array of options to override the defaults.
+     *
+     * @param array $options An array of options in key/value format
+     * @access public
+     */	
     function __construct($options=array())
     {
       $used_options=array_merge(AppConfig::get('webpage_defaults'), $options);
@@ -20,17 +41,27 @@
       $this->setTemplate($used_options['template']);
     }
     
-    function setTitle($v)
+    /**
+     * Sets a value for the title.
+     *
+     * @param string $v The title to be set
+     */	
+    public function setTitle($v)
     {
       $this->title = $v;
     }
     
-    function setTemplate($v)
+    public function setTemplate($v)
     {
       $this->template = $v;
     }
     
-    function renderPage()
+    /**
+     * Returns the content of the page
+     *
+     * @return string The HTML code of the page
+     */	
+    public function renderPage()
     {
       // visto che include produce direttamente un output, e questo non
       // ci va bene, lo catturiamo con le funzioni ob_start() e ob_get_clean(),
@@ -40,7 +71,13 @@
       return ob_get_clean();
     }
     
-    function __toString()
+    /**
+     * Returns the webpage as a string.
+     *
+     * @return string The HTML code of the page
+     * @see renderPage()
+     */	    
+    public function __toString()
     {
       // metodo magico
       return $this->renderPage();
