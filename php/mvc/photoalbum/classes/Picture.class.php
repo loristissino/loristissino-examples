@@ -16,6 +16,7 @@
       $this->valid=true;
       $this->storeInfo();
     }
+
 	
     function servePicture()
     {
@@ -51,15 +52,27 @@
     
     function getWidth()
     {
+      if(!$this->getIsValid())
+      {
+        throw new Exception('Invalid image');
+      }
 		  return $this->width;
 	  }
     function getHeight()
     {
+      if(!$this->getIsValid())
+      {
+        throw new Exception('Invalid image');
+      }
       return $this->height;
 	  }
     
     function getMime()
     {
+      if(!$this->getIsValid())
+      {
+        throw new Exception('Invalid image');
+      }
       return $this->mime;
     }
 	

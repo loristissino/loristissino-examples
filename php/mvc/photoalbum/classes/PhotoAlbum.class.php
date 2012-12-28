@@ -22,10 +22,17 @@
     */    
     private $dbh;
 	  
-	  function __construct($basepath)
+	  function __construct($basepath, $dbh=null)
 	  {
 		  $this->basepath = $basepath;
-      $this->dbh = $GLOBALS['dbh'];
+      if(is_null($dbh))
+      {
+        $this->dbh = $GLOBALS['dbh'];
+      }
+      else
+      {
+        $this->dbh = $dbh;
+      }
 	  }
 	  function getPictures()
 	  {
