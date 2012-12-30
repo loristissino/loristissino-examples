@@ -16,9 +16,9 @@
 <?php foreach($this->categories as $category): ?>
 <li>
 <?php echo link_to(
-	$category->name,
-	'?action=filterbycategory&amp;id='.$category->id,
-	array('title'=>'Seleziona le foto della categoria ' . $category->name)
+	$category->getName(),
+	'?action=filterbycategory&amp;id='.$category->getId(),
+	array('title'=>'Seleziona le foto della categoria ' . $category->getName())
 	) ?>
 </li>
 <?php endforeach ?>

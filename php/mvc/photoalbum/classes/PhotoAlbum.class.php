@@ -82,7 +82,13 @@
 
 		  foreach($this->dbh->query($sql, PDO::FETCH_OBJ) as $obj)
 		  {
-			  $result[]=$obj;
+        $category = new Category();
+        $category
+        ->setId($obj->id)
+        ->setName($obj->name)
+        ->setRank($obj->rank)
+        ;
+			  $result[]=$category;
 		  }
 		  return $result;
 	  }
