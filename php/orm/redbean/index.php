@@ -7,7 +7,7 @@ include('_header.php');
 require('auxiliary_functions.php');
 require('rb.php');
 
-define('EC', '#0000FF');
+define('EC', '#009900');
 
 class Custom_SimpleModel extends RedBean_SimpleModel
 {
@@ -172,9 +172,84 @@ $p2 = R::load('picture', 4);
 comment("OK - Loaded pictures using known ids", __LINE__);
 
 $c_cinema->ownPicture = array($p1, $p2);
+
 comment("OK - Set 'ownership'", __LINE__);
 R::store($c_cinema);
 comment("OK - Stored objects", __LINE__);
 
+comment("How to retrieve 'owned' objects", null, EC);
+
+foreach($c_hist->ownPicture as $p)
+{
+  comment("Picture $p", __LINE__);
+}
+
+heading(2, 'Managing many-to-many relationships');
+
+comment("Let's start by creating some people's records", null, EC);
+
+foreach(array(
+  'Alice',
+  'Bob',
+  'Charlie',
+  'Donna',
+) as $item)
+{
+  $person = R::dispense('person');
+  $person->name = $item;
+  R::store($person);
+  comment("OK - Stored person $person", __LINE__);
+}
+
+$picture1=R::load('picture', 1);
+$picture2=R::load('picture', 2);
+$picture3=R::load('picture', 3);
+$person2=R::load('person', 2);
+$person3=R::load('person', 3);
+
+$picture1->sharedPerson[] = $person2;
+$picture1->sharedPerson[] = $person3;
+
+$picture2->sharedPerson[] = $person2;
+comment("OK - Set information as shared for pictures", __LINE__);
+
+R::store($picture1);
+R::store($picture2);
+
+comment("Let's list persons connected to picture 1:", null, EC);
+
+foreach($picture1->sharedPerson as $p)
+{
+  comment("Person $p", __LINE__);
+}
+
+comment("Let's list pictures connected to person 2:", null, EC);
+
+foreach($person2->sharedPicture as $p)
+{
+  comment("Picture $p", __LINE__);
+}
+
+heading(2, 'Tagging');
+
+comment('Tags are special many-to-many information pieces associated automatically with different kinds of objects.', null, EC);
+comment('We do not need to store them explicitly.', null, EC);
+
+R::tag($picture1, array('Tolmezzo', 'Alpi', 'Tagliamento', 'beautiful sky'));
+R::tag($picture2, array('Dolwyddelan', 'Llywelyn ap Iorwerth', 'beautiful sky'));
+R::tag($picture3, array('blender'));
+comment('Stored tags for some pictures', __LINE__);
+
+comment('We can retrieve all the pictures that share the tag «beautiful sky»:', null, EC);
+foreach(R::tagged('picture', array('beautiful sky')) as $p)
+{
+  comment("Picture $p", __LINE__);
+}
+
+comment('We can retrieve all the pictures that share the tag «blender»', null, EC);
+foreach(R::tagged('picture', array('blender')) as $p)
+{
+  comment("Picture $p", __LINE__);
+}
 
 include('_footer.php');
