@@ -8,7 +8,7 @@
  * @property string $title
  *
  * The followings are the available model relations:
- * @property PictureTag[] $pictureTags
+ * @property Picture[] $pictures
  */
 class Tag extends CActiveRecord
 {
@@ -53,7 +53,7 @@ class Tag extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'pictureTags' => array(self::HAS_MANY, 'PictureTag', 'tag_id'),
+			'pictures' => array(self::MANY_MANY, 'Picture', 'picture_tag(tag_id, picture_id)'),
 		);
 	}
 

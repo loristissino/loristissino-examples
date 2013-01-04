@@ -12,9 +12,9 @@
  * @property string $category_id
  *
  * The followings are the available model relations:
- * @property PersonPicture[] $personPictures
+ * @property Person[] $people
  * @property Category $category
- * @property PictureTag[] $pictureTags
+ * @property Tag[] $tags
  */
 class Picture extends CActiveRecord
 {
@@ -78,9 +78,9 @@ class Picture extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'personPictures' => array(self::HAS_MANY, 'PersonPicture', 'picture_id'),
+			'people' => array(self::MANY_MANY, 'Person', 'person_picture(picture_id, person_id)'),
 			'category' => array(self::BELONGS_TO, 'Category', 'category_id'),
-			'pictureTags' => array(self::HAS_MANY, 'PictureTag', 'picture_id'),
+			'tags' => array(self::MANY_MANY, 'Tag', 'picture_tag(picture_id, tag_id)'),
 		);
 	}
 
