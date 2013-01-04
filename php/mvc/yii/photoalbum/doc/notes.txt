@@ -33,3 +33,15 @@
 1. Create the Model classes (with gii)
 
 1. Create the CRUD classes
+
+
+# Adding validators
+
+It is possible to:
+
+* add validator in the same class
+* create a custom validator
+
+See protected/model/Picture.php
+and http://www.yiiframework.com/wiki/168/create-your-own-validation-rule/#hh0
+

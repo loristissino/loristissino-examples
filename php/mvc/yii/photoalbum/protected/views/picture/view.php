@@ -22,9 +22,9 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
+		'description',
 		'height',
 		'width',
-		'description',
 		'type',
 		'category_id',
 	),

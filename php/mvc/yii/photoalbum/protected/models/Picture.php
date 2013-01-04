@@ -45,12 +45,30 @@ class Picture extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('height, width, category_id', 'length', 'max'=>11),
+      
+      // Added some validators (LT)
+      
+      array('height', 'numerical', 'integerOnly'=>true),
+      array('height', 'numerical', 'max'=>1000),
+      array('width', 'numerical', 'integerOnly'=>true),
+      array('height', 'numerical', 'max'=>1000),
+
+      // This is a custom validator defined in the same class
+      
+      array('type', 'checktype'),
+
 			array('description, type', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, height, width, description, type, category_id', 'safe', 'on'=>'search'),
 		);
 	}
+
+  public function checktype($attribute,$params)
+  {
+      if(!in_array($this->$attribute, array('jpeg', 'gif', 'png')))
+          $this->addError('type','Unsupported type.');
+  }
 
 	/**
 	 * @return array relational rules.
