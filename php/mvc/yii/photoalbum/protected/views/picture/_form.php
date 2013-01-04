@@ -39,11 +39,28 @@
 		<?php echo $form->error($model,'type'); ?>
 	</div>
 
+
+  <?php
+  // See http://stackoverflow.com/questions/9146309/does-yiis-giis-crud-generator-take-into-account-models-relations
+  /* original generated code
+  
 	<div class="row">
 		<?php echo $form->labelEx($model,'category_id'); ?>
 		<?php echo $form->textField($model,'category_id',array('size'=>11,'maxlength'=>11)); ?>
 		<?php echo $form->error($model,'category_id'); ?>
 	</div>
+  */
+  
+  ?>
+  <div class="row">
+     <?php echo $form->labelEx($model, 'category_id'); ?>
+     <?php echo $form->dropDownList($model,'category_id', CHtml::listData(Category::model()->findAll(),
+        'id', //this is the attribute name for list option values 
+        'name' // this is the attribute name for list option texts 
+         )
+      ); ?>
+     <?php echo $form->error($model,'venue'); ?>
+  </div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
