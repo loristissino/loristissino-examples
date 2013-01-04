@@ -27,6 +27,11 @@ class Picture extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+  
+  public function __toString()
+  {
+    return sprintf('«%s» (%dx%d)', $this->description, $this->width, $this->height);
+  }
 
 	/**
 	 * @return string the associated database table name
