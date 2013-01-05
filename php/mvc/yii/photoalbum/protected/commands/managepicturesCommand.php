@@ -72,4 +72,36 @@ class ManagepicturesCommand extends CConsoleCommand
       }
     }
   }
+
+  public function actionGenerate($number, $scenario='insert')
+  {
+    echo text_underlined(sprintf('Generating %d new pictures...', $number));
+    
+    $types=array('jpeg', 'png', 'gif', 'foo', 'bar');
+    
+    for($i=0; $i<$number; $i++)
+    {
+      $mypicture = new Picture();
+      $mypicture->description = 'Picture #' . $i;
+      echo text_underlined($mypicture->description, 1, 1, '-');
+      $mypicture->scenario=$scenario;
+      $mypicture->type = $types[rand(0, sizeof($types)-1)];
+      $mypicture->width = 0;  // this will validate on scenario 'insert', and not on scenario 'informationRetrieval'
+      $mypicture->height = 0;
+      
+      echo 'Picture data ok? ' . ($mypicture->validate() ? 'true' : 'false' ) . "\n";
+      //echo $mypicture->scenario . "\n";
+      if($mypicture->save())
+      {
+        echo 'Saved picture ' . $mypicture . "\n";
+        //echo $mypicture->scenario . "\n";
+      }
+      else
+      {
+        echo 'Could not save picture ' . $mypicture . "\n";
+        //echo $mypicture->scenario . "\n";
+      }
+    }
+  } 
+    
 }

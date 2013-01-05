@@ -67,9 +67,9 @@ class Picture extends CActiveRecord
       // Added some validators (LT)
       
       array('height', 'numerical', 'integerOnly'=>true),
-      array('height', 'numerical', 'max'=>1000),
+      array('height', 'numerical', 'min'=>1, 'on'=>'informationRetrieval'),
       array('width', 'numerical', 'integerOnly'=>true),
-      array('height', 'numerical', 'max'=>1000),
+      array('height', 'numerical', 'min'=>1, 'on'=>'informationRetrieval'),
 
       // This is a custom validator defined in the same class
       
