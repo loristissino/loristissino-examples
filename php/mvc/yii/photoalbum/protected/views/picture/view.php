@@ -16,16 +16,23 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Picture #<?php echo $model->id; ?></h1>
+<h1>Picture «<?php echo $model->description ?>»</h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'description',
 		'height',
 		'width',
 		'type',
-		'category_id',
+    array( // related category displayed as a link
+           // see http://www.yiiframework.com/doc/api/1.2/CDetailView
+      'label'=>'category',
+      'type'=>'raw',
+      'value'=>CHtml::link(
+        CHtml::encode($model->category),
+        array('category/view','id'=>$model->category->id)
+        ),
+      ),
 	),
 )); ?>

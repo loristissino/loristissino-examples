@@ -16,7 +16,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Category #<?php echo $model->id; ?></h1>
+<h1>Category «<?php echo $model ?>»</h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -25,3 +25,10 @@ $this->menu=array(
 		'name',
 	),
 )); ?>
+
+<?php if(sizeof($pictures)): ?>
+<h2>Pictures</h2>
+<?php foreach($pictures as $picture): ?>
+  <p><?php echo $picture ?> - <?php echo CHtml::link('View',array('picture/view', 'id'=>$picture->id)); ?></p>
+<?php endforeach ?>
+<?php endif ?>
