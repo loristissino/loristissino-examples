@@ -9,21 +9,29 @@ return array(
 	// preloading 'log' component
 	'preload'=>array('log'),
 
+	// autoloading model and component classes
+	'import'=>array(
+		'application.models.*',
+		'application.components.*',
+	),
+
 	// application components
 	'components'=>array(
+    /*
 		'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		),
+    */
 		// uncomment the following to use a MySQL database
-		/*
+		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+			'connectionString' => 'mysql:host=localhost;dbname=yii_pa',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
+			'username' => 'yii_pa',
+			'password' => '4dUHsp3mV4mB9wrW',
 			'charset' => 'utf8',
 		),
-		*/
+		
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(

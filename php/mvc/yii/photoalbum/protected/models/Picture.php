@@ -32,6 +32,19 @@ class Picture extends CActiveRecord
   {
     return sprintf('«%s» (%dx%d)', $this->description, $this->width, $this->height);
   }
+  
+	/**
+   * Returns the number of pixels in the picture.
+   * This is here to show how virtual attributes work.
+   * See http://www.yiiframework.com/wiki/167/understanding-virtual-attributes-and-get-set-methods/
+   * We can call $picture->getPixels() or directly $picture->pixels.
+   * 
+	 * @return integer the number of pixels in the picture
+	 */
+  public function getPixels()
+  {
+    return $this->width * $this->height;
+  }
 
 	/**
 	 * @return string the associated database table name
