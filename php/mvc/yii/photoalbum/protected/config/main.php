@@ -9,7 +9,7 @@ require_once( dirname(__FILE__) . '/../components/helpers.php');
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'My Wonderful PhotoAlbum',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -90,5 +90,6 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
+    'picturesDirectory'=>dirname(__FILE__) . '/../data/ourpictures',
 	),
 );

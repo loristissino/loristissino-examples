@@ -10,9 +10,11 @@
 
 class ManagepicturesCommand extends CConsoleCommand
 {
+  
   public function actionIndex()
   {
     echo "You can use this command for various activities...\n";
+    //echo Yii::app()->params['picturesDirectory'] . "\n";
   }
   
   public function actionTestarguments($myoption1, $myoption2="foo", $args=array())
@@ -23,7 +25,22 @@ class ManagepicturesCommand extends CConsoleCommand
     print_r($args);
   }
   
-  public function actionCheck()
+  public function actionCheck($storeInformation=false)
+  {
+    $pictures = Picture::model()->findAll();
+    
+    foreach($pictures as $picture)
+    {
+      echo $picture . "\n";
+      $errors = $picture->checkFile(Yii::app()->params['picturesDirectory'], $storeInformation);
+      if(sizeof($errors))
+      {
+        print_r($errors);
+      }
+    }
+  }
+
+  public function actionList()
   {
     echo text_underlined('Basic example', 0);
     

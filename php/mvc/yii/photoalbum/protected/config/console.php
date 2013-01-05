@@ -1,12 +1,13 @@
 <?php
 
-require_once( dirname(__FILE__) . '/../components/helpers.php');
+$_main = include_once( 'main.php' );
+// see http://www.yiiframework.com/forum/index.php/topic/32414-trick-share-config-cross-web-console-app/
 
 // This is the configuration for yiic console application.
 // Any writable CConsoleApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Console Application',
+	'name'=>'My PhotoAlbum Console Application',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -26,13 +27,7 @@ return array(
     */
 		// uncomment the following to use a MySQL database
 		
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=yii_pa',
-			'emulatePrepare' => true,
-			'username' => 'yii_pa',
-			'password' => '4dUHsp3mV4mB9wrW',
-			'charset' => 'utf8',
-		),
+		'db'=>$_main['components']['db'],
 		
 		'log'=>array(
 			'class'=>'CLogRouter',
@@ -43,5 +38,6 @@ return array(
 				),
 			),
 		),
-	),
+  ),
+  'params'=>$_main['params'],
 );

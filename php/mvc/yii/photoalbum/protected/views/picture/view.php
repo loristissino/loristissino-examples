@@ -18,6 +18,15 @@ $this->menu=array(
 
 <h1>Picture «<?php echo $model->description ?>»</h1>
 
+<p>
+<?php echo CHtml::image(
+  CHtml::normalizeUrl(array('picture/serve', 'id'=>$model->id)),
+  CHtml::encode($model->description),
+  array('width'=>$model->width, 'height'=>$model->height)
+  )
+?>
+</p>
+
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(

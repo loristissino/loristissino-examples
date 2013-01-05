@@ -31,3 +31,4 @@ Number of pictures: <?php echo sizeof($category->pictures) ?><br />
   <?php endforeach ?>
 <?php endforeach ?>
 </p>
+

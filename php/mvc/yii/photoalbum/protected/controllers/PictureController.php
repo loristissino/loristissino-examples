@@ -28,7 +28,7 @@ class PictureController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','serve'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -55,6 +55,19 @@ class PictureController extends Controller
 			'model'=>$this->loadModel($id),
 		));
 	}
+
+	/**
+	 * Serves an image via HTTP.
+	 * @param integer $id the ID of the picture to be displayed
+	 */
+	public function actionServe($id)
+	{
+    $picture = $this->loadModel($id);
+    header("Content-Type: image/" . $picture->type);
+    readfile($picture->getFile(Yii::app()->params['picturesDirectory']));
+    return;
+	}
+
 
 	/**
 	 * Creates a new model.

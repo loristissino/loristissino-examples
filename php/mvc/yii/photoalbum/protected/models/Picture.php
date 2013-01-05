@@ -15,9 +15,22 @@
  * @property Person[] $people
  * @property Category $category
  * @property Tag[] $tags
+ * 
+ * The followings are for internal use:
+ * @property boolean $valid
+ * @property boolean $realwidth
+ * @property boolean $realheight
+ * @property boolean $realtype
+ * 
  */
 class Picture extends CActiveRecord
 {
+  
+  private $valid;
+  private $realwidth;
+  private $realheight;
+  private $realtype;
+  
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -44,6 +57,62 @@ class Picture extends CActiveRecord
   public function getPixels()
   {
     return $this->width * $this->height;
+  }
+  
+  public function getFile($path)
+  {
+    return $path . '/' . $this->id;
+  }
+
+  protected function retrieveInformation($path)
+  {
+    $info=@getimagesize($this->getFile($path));
+    $this->valid=is_array($info);
+    if(!$this->valid)
+    {
+      return;
+    }
+    $this->realwidth=$info[0];
+    $this->realheight=$info[1];
+    list($type,$subtype) = explode('/', $info['mime']);
+    if($type!='image')
+    {
+      $this->valid=false;
+    }
+    $this->realtype=$subtype;
+  }
+  
+  public function checkFile($path, $storeInformation=false)
+  {
+    $this->retrieveInformation($path);
+    $errors=array();
+    if(!$this->valid)
+    {
+      $errors['valid'] = array('message'=>'do not match', 'got'=>'valid', 'found'=>'invalid');
+      return $errors;
+    }
+    foreach(array(
+      array('got'=>'width', 'found'=>'realwidth'),
+      array('got'=>'height', 'found'=>'realheight'),
+      array('got'=>'type', 'found'=>'realtype'),
+      ) as $check)
+    {
+      if($this->$check['got'] !=$this->$check['found'])
+      {
+        $errors[$check['got']]=array('message'=>'do not match', 'got'=>$this->$check['got'], 'found'=>$this->$check['found']);
+      }
+    }
+    
+    if($storeInformation)
+    {
+      foreach($errors as $property=>$values)
+      {
+        $this->$property = $values['found'];
+      }
+      $this->save();
+    }
+    
+    return $errors;
   }
 
 	/**
