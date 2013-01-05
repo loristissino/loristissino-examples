@@ -1,5 +1,7 @@
 <?php
 
+require_once( dirname(__FILE__) . '/../components/helpers.php');
+
 // This is the configuration for yiic console application.
 // Any writable CConsoleApplication properties can be configured here.
 return array(
@@ -37,7 +39,7 @@ return array(
 			'routes'=>array(
 				array(
 					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning',
+					'levels'=>'trace, info, error, warning',
 				),
 			),
 		),

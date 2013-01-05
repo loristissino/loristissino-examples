@@ -1,5 +1,7 @@
 <?php
 
+require_once( dirname(__FILE__) . '/../components/helpers.php');
+
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
 
@@ -71,7 +73,7 @@ return array(
 			'routes'=>array(
 				array(
 					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning',
+					'levels'=>'trace, info, error, warning',
 				),
 				// uncomment the following to show log messages on web pages
 				/*

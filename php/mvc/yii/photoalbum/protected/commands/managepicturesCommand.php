@@ -25,12 +25,51 @@ class ManagepicturesCommand extends CConsoleCommand
   
   public function actionCheck()
   {
+    echo text_underlined('Basic example', 0);
+    
     $pictures = Picture::model()->findAll();
     
     foreach($pictures as $picture)
     {
       echo $picture . "\n";
       echo sprintf('  %d pixel(s)', $picture->pixels) . "\n";
+    }
+    
+    echo text_underlined('Lazy loading example');
+
+    $pictures = Picture::model()->findAll();
+    foreach($pictures as $picture)
+    {
+      echo $picture . "\n";
+      echo sprintf('  Category: %s', $picture->category) . "\n";
+    }
+    
+    echo text_underlined('Eager loading example');
+    
+    // see http://www.yiiframework.com/doc/guide/1.2/en/database.arr
+
+    $pictures = Picture::model()->with('category')->findAll();
+    foreach($pictures as $picture)
+    {
+      echo $picture . "\n";
+      echo sprintf('  Category: %s', $picture->category) . "\n";
+    }
+
+    echo text_underlined('Another eager loading example');
+
+    $pictures = Picture::model()->with('category', 'people')->findAll();
+    foreach($pictures as $picture)
+    {
+      echo $picture . "\n";
+      echo sprintf('  Category: %s', $picture->category) . "\n";
+      if(sizeof($picture->people))
+      {
+        echo '  People:' . "\n";
+        foreach($picture->people as $person)
+        {
+          echo '    ' . $person . "\n";
+        }
+      }
     }
   }
 }
