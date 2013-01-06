@@ -120,5 +120,20 @@ class ManagepicturesCommand extends CConsoleCommand
       }
     }
   } 
+
+  public function actionConstructorsdemo()
+  {
+    echo 'This makes no sense: ' . Picture::model()->realwidth . "\n";
+    echo 'This does make sense: ' . "\n";
+    print_r(Picture::model()->relations());
+    $picture1 = new Picture();
+    $picture1->description = 'picture 1';
+    echo 'The correct way to instantiate an object: '. $picture1 . ' ' . get_class($picture1) . "\n";
+    echo 'It works: ' . $picture1->realwidth . "\n";
+    $picture2 = Picture::model();
+    $picture2->description = 'picture 2';
+    echo 'A really BAD IDEA to instantiate an object: '. $picture2 . ' ' . get_class($picture2) . "\n";
+    echo 'It does not work: ' . $picture2->realwidth . "\n";
+  }
     
 }

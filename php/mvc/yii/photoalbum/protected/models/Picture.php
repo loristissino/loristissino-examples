@@ -27,9 +27,30 @@ class Picture extends CActiveRecord
 {
   
   private $valid;
-  private $realwidth;
+  public $realwidth;
   private $realheight;
   private $realtype;
+  
+  /**
+	 * This method is invoked after a model instance is created by new operator.
+	 * The default implementation raises the {@link onAfterConstruct} event.
+	 * It is here overridden to do postprocessing after model creation.
+	 * We call the parent implementation so that the event is raised properly.
+	 */  
+  protected function afterConstruct()
+  {
+    parent::afterConstruct();
+    $this->realwidth = 200;
+    // This is just to show that we can do something on object creation.
+    // It is better to avoid overriding the __construct() method, because
+    // of some events raised.
+    // A proper object is created with something like
+    // $picture = new Picture();
+    // But if we create an object with
+    // $picture = Picture::model()
+    // (which does not make sense, but is technically possible)
+    // the events would not be fired
+  }
   
 	/**
 	 * Returns the static model of the specified AR class.
@@ -208,4 +229,5 @@ class Picture extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+  
 }
