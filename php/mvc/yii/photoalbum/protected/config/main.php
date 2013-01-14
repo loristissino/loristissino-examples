@@ -13,6 +13,9 @@ return array(
   
   // add target language
   'language' => 'it',
+  'behaviors'=>array(
+    'onbeginRequest'=>array('class'=>'application.components.StartupBehavior'),
+  ),
   
 
 	// preloading 'log' component

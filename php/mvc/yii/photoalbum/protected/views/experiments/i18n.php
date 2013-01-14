@@ -1,4 +1,6 @@
-<h1>I18N experiments</h1>
+<h1><?php echo Yii::t('App', 'I18n experiments') ?></h1>
+
+<h2>Current language: <?php echo Yii::app()->language ?></h2>
 
 <p><?php
   echo Yii::t('App', 'The directory "{path}" is not readable.',
@@ -33,3 +35,7 @@
 <?php endfor ?>
 </ul>
 <p>Pi: <?php echo Yii::app()->numberFormatter->formatDecimal(3.14) ?></p>
+
+<pre>
+<?php print_r(Yii::app()->request->getPreferredLanguage()) ?>
+</pre>
