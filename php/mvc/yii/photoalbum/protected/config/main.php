@@ -10,6 +10,10 @@ require_once( dirname(__FILE__) . '/../components/helpers.php');
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Wonderful PhotoAlbum',
+  
+  // add target language
+  'language' => 'it',
+  
 
 	// preloading 'log' component
 	'preload'=>array('log'),

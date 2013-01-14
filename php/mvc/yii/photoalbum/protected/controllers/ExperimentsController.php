@@ -18,6 +18,11 @@ class ExperimentsController extends Controller
     */
     
 	}
+  
+  public function actionI18n()
+  {
+    $this->render('i18n', array('path'=>'/foo/bar'));
+  }
 
 	// Uncomment the following methods and override them if needed
 	/*
