@@ -83,7 +83,14 @@ class PictureController extends Controller
 		if(isset($_POST['Picture']))
 		{
 			$model->attributes=$_POST['Picture'];
-			if($model->save())
+      
+      $file=CUploadedFile::getInstance($model, 'uploadedfile');
+      if (is_object($file) && get_class($file)==='CUploadedFile')
+      {          
+  	    $model->uploadedfile = $file;
+    	}
+      
+			if($model->save() && $model->saveUploadedfile(Yii::app()->params['picturesDirectory']))
 				$this->redirect(array('view','id'=>$model->id));
 		}
 

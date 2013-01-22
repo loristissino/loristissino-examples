@@ -30,6 +30,7 @@ class Picture extends CActiveRecord
   public $realwidth;
   private $realheight;
   private $realtype;
+  public $uploadedfile;
   
   /**
 	 * This method is invoked after a model instance is created by new operator.
@@ -83,6 +84,26 @@ class Picture extends CActiveRecord
   public function getFile($path)
   {
     return $path . '/' . $this->id;
+  }
+  
+  public function getUploadedfile()
+  {
+    return $this->uploadedfile;
+  }
+  
+  public function saveUploadedfile($path)
+  {
+    if(!$this->uploadedfile instanceof CUploadedFile)
+    {
+      throw new Exception('This function only works with just uploaded files.');
+    }
+    if($this->uploadedfile->saveAs($path . DIRECTORY_SEPARATOR . $this->id))
+    {
+      $this->retrieveInformation($path);
+      $this->height=$this->realheight;
+      $this->width=$this->realwidth;
+      $this->save();
+    }
   }
 
   protected function retrieveInformation($path)
@@ -152,6 +173,7 @@ class Picture extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+      array('description', 'required'),
 			array('height, width, category_id', 'length', 'max'=>11),
       
       // Added some validators (LT)
@@ -166,6 +188,14 @@ class Picture extends CActiveRecord
       array('type', 'checktype'),
 
 			array('description, type', 'length', 'max'=>255),
+      
+			array('uploadedfile', 
+					'file',
+					'allowEmpty' => true,  // if it is in the list of required fields above, this must be set to true here
+					'maxSize'=>1024 * 100, // 100KiB
+					'tooLarge'=>'The file was larger than 100KiB. Please upload a smaller file.',
+			),
+      
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, height, width, description, type, category_id', 'safe', 'on'=>'search'),

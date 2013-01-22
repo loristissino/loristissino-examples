@@ -9,6 +9,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'picture-form',
 	'enableAjaxValidation'=>false,
+  'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -38,7 +39,12 @@
 		<?php echo $form->textField($model,'type',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'type'); ?>
 	</div>
-
+  
+	<div class="row">
+		<?php echo $form->labelEx($model,'uploadedfile'); ?>
+		<?php echo $form->fileField($model,'uploadedfile',array('size'=>50)); ?>
+		<?php echo $form->error($model,'uploadedfile'); ?>
+	</div>
 
   <?php
   // See http://stackoverflow.com/questions/9146309/does-yiis-giis-crud-generator-take-into-account-models-relations
