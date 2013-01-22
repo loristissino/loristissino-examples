@@ -1,4 +1,4 @@
-<h1><?php echo Yii::t('App', 'I18n experiments') ?></h1>
+<h1><?php echo Yii::t('App', 'Internationalization experiments') ?></h1>
 
 <h2>Current language: <?php echo Yii::app()->language ?></h2>
 
@@ -36,6 +36,11 @@
 </ul>
 <p>Pi: <?php echo Yii::app()->numberFormatter->formatDecimal(3.14) ?></p>
 
-<pre>
-<?php print_r(Yii::app()->request->getPreferredLanguage()) ?>
-</pre>
+<h2>Preferences</h2>
+<p>Preferred language: <?php print_r(Yii::app()->request->getPreferredLanguage()) ?></p>
+
+<h2>A loop for supported languages</h2>
+<?php foreach(array('en', 'it', 'pl') as $lang): ?>
+  <?php Yii::app()->language=$lang ?>
+  <p><?php echo $lang ?>: <?php echo Yii::t('App', 'Internationalization experiments') ?></p>
+<?php endforeach ?>
