@@ -19,9 +19,11 @@ class ManagepicturesCommand extends CConsoleCommand
   
   public function actionTestarguments($myoption1, $myoption2="foo", $args=array())
   {
+    // use: [command] --myoption1="foo" --myoption2="bar" argumen01 argument02
+    
     echo "Showing arguments...\n";
-    echo $option1 . "\n";
-    echo $option2 . "\n";
+    echo $myoption1 . "\n";
+    echo $myoption2 . "\n";
     print_r($args);
   }
   
