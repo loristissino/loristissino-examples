@@ -41,6 +41,10 @@ return array(
 
 	// application components
 	'components'=>array(
+    'request'=>array(
+      // see http://www.yiiframework.com/doc/guide/1.1/en/topics.security
+      'enableCsrfValidation'=>true,
+    ),
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
