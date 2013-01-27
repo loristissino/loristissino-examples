@@ -1,6 +1,6 @@
 <?php
 
-class PictureController extends Controller
+class PlaceController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -28,15 +28,15 @@ class PictureController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','serve'),
+				'actions'=>array('index','view'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','addtag'),
+				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','fix'),
+				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -57,58 +57,26 @@ class PictureController extends Controller
 	}
 
 	/**
-	 * Serves an image via HTTP.
-	 * @param integer $id the ID of the picture to be displayed
-	 */
-	public function actionServe($id)
-	{
-    $picture = $this->loadModel($id);
-    header("Content-Type: image/" . $picture->type);
-    readfile($picture->getFile(Yii::app()->params['picturesDirectory']));
-    return;
-	}
-
-
-	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
-		$model=new Picture;
+		$model=new Place;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Picture']))
+		if(isset($_POST['Place']))
 		{
-			$model->attributes=$_POST['Picture'];
-      
-      $file=CUploadedFile::getInstance($model, 'uploadedfile');
-      if (is_object($file) && get_class($file)==='CUploadedFile')
-      {          
-  	    $model->uploadedfile = $file;
-    	}
-      
-			if($model->save() && $model->saveUploadedfile(Yii::app()->params['picturesDirectory']))
+			$model->attributes=$_POST['Place'];
+			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
 		));
-	}
-
-	public function actionFix($id)
-	{
-    $model=$this->loadModel($id);
-
-		if($_SERVER['REQUEST_METHOD']=='POST')
-		{
-			$model->checkFile(Yii::app()->params['picturesDirectory'], true);
-		}
-    
-    $this->redirect(array('view','id'=>$model->id));
 	}
 
 	/**
@@ -123,41 +91,15 @@ class PictureController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Picture']))
+		if(isset($_POST['Place']))
 		{
-			$model->attributes=$_POST['Picture'];
+			$model->attributes=$_POST['Place'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
-		));
-	}
-
-	public function actionAddtag($id)
-	{
-		$model=$this->loadModel($id);
-    
-    $tagform = new PictureAddTagForm;
-    $tagform->picture_id = $model->id;
-    $tagform->tag = 'write your tag here';
-
-		if(isset($_POST['PictureAddTagForm']))
-		{
-      $tagform->attributes=$_POST['PictureAddTagForm'];
-			if($tagform->validate())
-      {
-        if($model->addTag($_POST['PictureAddTagForm']))
-        {
-          $this->redirect(array('view','id'=>$model->id));
-        }
-      }
-		}
-
-		$this->render('addtag',array(
-			'model'=>$model,
-      'tagform'=>$tagform,
 		));
 	}
 
@@ -180,7 +122,7 @@ class PictureController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Picture');
+		$dataProvider=new CActiveDataProvider('Place');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -191,10 +133,10 @@ class PictureController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Picture('search');
+		$model=new Place('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Picture']))
-			$model->attributes=$_GET['Picture'];
+		if(isset($_GET['Place']))
+			$model->attributes=$_GET['Place'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -205,12 +147,12 @@ class PictureController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Picture the loaded model
+	 * @return Place the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Picture::model()->findByPk($id);
+		$model=Place::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -218,11 +160,11 @@ class PictureController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Picture $model the model to be validated
+	 * @param Place $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='picture-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='place-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

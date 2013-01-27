@@ -1,38 +1,32 @@
 <?php
 
 /**
- * This is the model class for table "tag".
+ * This is the model class for table "place".
  *
- * The followings are the available columns in table 'tag':
- * @property string $id
- * @property string $title
- *
- * The followings are the available model relations:
- * @property Picture[] $pictures
+ * The followings are the available columns in table 'place':
+ * @property integer $id
+ * @property string $description
+ * @property double $lat
+ * @property double $long
  */
-class Tag extends CActiveRecord
+class Place extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Tag the static model class
+	 * @return Place the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
 
-  public function __toString()
-  {
-    return $this->title;
-  }
-  
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'tag';
+		return 'place';
 	}
 
 	/**
@@ -43,10 +37,13 @@ class Tag extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title', 'length', 'max'=>255),
+			array('description, lat', 'required'),
+			array('lat', 'numerical', 'min'=>-90),
+			array('lat', 'numerical', 'max'=>90),
+			array('description', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title', 'safe', 'on'=>'search'),
+			array('id, description, lat, long', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,7 +55,6 @@ class Tag extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'pictures' => array(self::MANY_MANY, 'Picture', 'picture_tag(tag_id, picture_id)'),
 		);
 	}
 
@@ -69,7 +65,9 @@ class Tag extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
+			'description' => 'Description',
+			'lat' => 'Lat',
+			'long' => 'Long',
 		);
 	}
 
@@ -84,11 +82,18 @@ class Tag extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('title',$this->title,true);
+		$criteria->compare('id',$this->id);
+		$criteria->compare('description',$this->description,true);
+		$criteria->compare('lat',$this->lat);
+		$criteria->compare('long',$this->long);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+  
+  public function getCoordinates()
+  {
+    return $this->lat . ', ' . $this->long;
+  }
 }

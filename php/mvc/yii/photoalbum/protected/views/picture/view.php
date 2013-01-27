@@ -45,3 +45,30 @@ $this->menu=array(
       ),
 	),
 )); ?>
+
+<hr />
+
+<h2>Tags</h2>
+
+<p>
+<?php foreach($model->tags as $tag): ?>
+  <?php echo $tag->title ?><br />
+<?php endforeach ?>
+</p>
+
+<p><?php echo CHtml::link(
+        'Add a tag',
+        array('picture/addtag','id'=>$model->id)
+        )
+?>
+</p>
+
+<p><?php echo CHtml::link(
+    'Fix picture',
+    $url=CHtml::normalizeUrl(array('picture/fix', 'id'=>$model->id)),
+    array(
+      'submit' => $url,
+      'title' => 'Check real size and type and fix data base entries',
+    )
+  )
+?></p>

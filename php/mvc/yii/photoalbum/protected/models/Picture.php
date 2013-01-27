@@ -237,6 +237,38 @@ class Picture extends CActiveRecord
 		);
 	}
 
+  public function addTag($values=array())
+  {
+    if($values['picture_id']!=$this->id)
+    {
+      return false;
+    }
+    
+    $tag = new Tag();
+    $tag->title = $values['tag'];
+    try
+    {
+      $tag->save();
+    }
+    catch (Exception $e)
+    {
+      return false;
+    }
+    
+    $picture_tag = new PictureTag();
+    $picture_tag->picture_id = $this->id;
+    $picture_tag->tag_id = $tag->id;
+    try
+    {
+      $picture_tag->save();
+    }
+    catch (Exception $e)
+    {
+      return false;
+    }
+    return true;
+  }
+
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
