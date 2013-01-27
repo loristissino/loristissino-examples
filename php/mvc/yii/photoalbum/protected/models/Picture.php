@@ -12,6 +12,7 @@
  * @property string $category_id
  * @property string $create_time
  * @property string $update_time
+ * @property string $md5sum
  *
  * The followings are the available model relations:
  * @property Person[] $people
@@ -83,8 +84,12 @@ class Picture extends CActiveRecord
     return $this->width * $this->height;
   }
   
-  public function getFile($path)
+  public function getFile($path='')
   {
+    if(!$path)
+    {
+      $path=Yii::app()->params['picturesDirectory'];
+    }
     return $path . '/' . $this->id;
   }
   
@@ -198,6 +203,8 @@ class Picture extends CActiveRecord
 					'tooLarge'=>'The file was larger than 100KiB. Please upload a smaller file.',
 			),
       
+      array('md5sum', 'length', 'max'=>32),
+      
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, height, width, description, type, category_id', 'safe', 'on'=>'search'),
@@ -238,6 +245,7 @@ class Picture extends CActiveRecord
 			'category_id' => 'Category',
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
+      'md5sum' => 'Md5sum',
     );
 	}
 
@@ -292,6 +300,7 @@ class Picture extends CActiveRecord
 		$criteria->compare('category_id',$this->category_id,true);
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('update_time',$this->update_time,true);
+    $criteria->compare('md5sum',$this->md5sum,true);
     
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -301,11 +310,16 @@ class Picture extends CActiveRecord
   public function behaviors()
   {
     return array(
+        // with some DBMSs, we can get this behaviour on db - level
         'CTimestampBehavior'=>array(
           'class'=>'zii.behaviors.CTimestampBehavior',
           'createAttribute'=>'create_time',
           'updateAttribute'=>'update_time',
         ),
+        'Addmd5sumBehavior'=>array(
+          'class'=>'ext.behaviors.Addmd5sumBehavior',
+          'md5sumAttribute'=>'md5sum',
+        )
     );
   }
   
