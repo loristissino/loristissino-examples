@@ -17,27 +17,9 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'height'); ?>
-		<?php echo $form->textField($model,'height',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($model,'height'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'width'); ?>
-		<?php echo $form->textField($model,'width',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($model,'width'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'description'); ?>
 		<?php echo $form->textField($model,'description',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'description'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'type'); ?>
-		<?php echo $form->textField($model,'type',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'type'); ?>
 	</div>
   
 	<div class="row">

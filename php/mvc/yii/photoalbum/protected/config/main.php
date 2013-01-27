@@ -12,7 +12,7 @@ return array(
 	'name'=>'My Wonderful PhotoAlbum',
   
   // add target language
-  'language' => 'it',
+  'language' => 'en',
   'behaviors'=>array(
     'onbeginRequest'=>array('class'=>'application.components.StartupBehavior'),
   ),

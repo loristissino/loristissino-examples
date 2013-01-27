@@ -10,6 +10,8 @@
  * @property string $description
  * @property string $type
  * @property string $category_id
+ * @property string $create_time
+ * @property string $update_time
  *
  * The followings are the available model relations:
  * @property Person[] $people
@@ -234,7 +236,9 @@ class Picture extends CActiveRecord
 			'description' => 'Description',
 			'type' => 'Type',
 			'category_id' => 'Category',
-		);
+			'create_time' => 'Create Time',
+			'update_time' => 'Update Time',
+    );
 	}
 
   public function addTag($values=array())
@@ -286,10 +290,23 @@ class Picture extends CActiveRecord
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('type',$this->type,true);
 		$criteria->compare('category_id',$this->category_id,true);
-
+		$criteria->compare('create_time',$this->create_time,true);
+		$criteria->compare('update_time',$this->update_time,true);
+    
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+  
+  public function behaviors()
+  {
+    return array(
+        'CTimestampBehavior'=>array(
+          'class'=>'zii.behaviors.CTimestampBehavior',
+          'createAttribute'=>'create_time',
+          'updateAttribute'=>'update_time',
+        ),
+    );
+  }
   
 }
