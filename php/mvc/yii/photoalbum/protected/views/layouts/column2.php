@@ -17,6 +17,8 @@
 		));
 		$this->endWidget();
 	?>
+  <hr />
+  <?php $this->widget('TagCloud') ?>
 	</div><!-- sidebar -->
 </div>
 <?php $this->endContent(); ?>
