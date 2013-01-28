@@ -4,6 +4,7 @@
  *  run this command with something like:
  *  ./yiic managepictures
  *  ./yiic managepictures check
+ *  -/yiic managepictures testarguments --myoption1='foo'
  * 
  * see http://www.yiiframework.com/doc/guide/1.1/en/topics.console
 */
@@ -137,5 +138,43 @@ class ManagepicturesCommand extends CConsoleCommand
     echo 'A really BAD IDEA to instantiate an object: '. $picture2 . ' ' . get_class($picture2) . "\n";
     echo 'It does not work: ' . $picture2->realwidth . "\n";
   }
+
+  public function actionTransactionsdemo()
+  {
+    $transaction = Yii::app()->db->beginTransaction();
+    
+    $picture = new Picture();
+    $picture->description="Foo";
+    $picture->height=100;
+    $picture->width=200;
+    
+    $picture->save(false);
+    $id=$picture->id;
+    
+    echo sprintf("Picture %s saved with id=%d", $picture,  $id) . "\n";
+    if($picture=Picture::model()->findByPk($id))
+    {
+      echo sprintf("Picture %s found", $picture,  $id) . "\n";
+    }
+    else
+    {
+      echo sprintf("Picture not found") . "\n";
+    }
+    
+    // $transaction->commit();
+    echo "Rolling back...\n";
+    $transaction->rollBack();
+    
+    $picture=Picture::model()->findByPk($id);
+    if($picture=Picture::model()->findByPk($id))
+    {
+      echo sprintf("Picture %s found", $picture,  $id) . "\n";
+    }
+    else
+    {
+      echo sprintf("Picture not found") . "\n";
+    }
+  }
+
     
 }

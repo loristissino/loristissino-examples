@@ -16,7 +16,7 @@ class Addmd5sumBehavior extends CActiveRecordBehavior
       {
         $md5sum=null;
       }
+      $this->owner->md5sum=$md5sum;
     }
-    $this->owner->md5sum=$md5sum;
   }
 }
