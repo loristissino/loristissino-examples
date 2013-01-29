@@ -59,6 +59,7 @@ class Tag extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'pictures' => array(self::MANY_MANY, 'Picture', 'picture_tag(tag_id, picture_id)'),
+      'count' => array(self::STAT, 'Picture', 'picture_tag(tag_id, picture_id)'),
 		);
 	}
 
@@ -91,4 +92,5 @@ class Tag extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
 }

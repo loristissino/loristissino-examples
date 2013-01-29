@@ -11,7 +11,7 @@ class TagCloud extends CPortlet
  
     protected function renderContent()
     {
-      $tags = Tag::model()->findAll();
+      $tags = Tag::model()->with('count')->findAll();
       $this->render('tagCloud', array('tags'=>$tags));
     }
 }

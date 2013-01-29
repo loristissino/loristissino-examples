@@ -256,15 +256,21 @@ class Picture extends CActiveRecord
       return false;
     }
     
-    $tag = new Tag();
-    $tag->title = $values['tag'];
-    try
+    $transaction = $this->getDbConnection()->beginTransaction();
+    
+    if (!$tag = Tag::model()->findByAttributes(array('title'=>$values['tag'])))
     {
-      $tag->save();
-    }
-    catch (Exception $e)
-    {
-      return false;
+      $tag = new Tag();
+      $tag->title = $values['tag'];
+      try
+      {
+        $tag->save();
+      }
+      catch (Exception $e)
+      {
+        $transaction->rollBack();
+        return false;
+      }
     }
     
     $picture_tag = new PictureTag();
@@ -276,8 +282,11 @@ class Picture extends CActiveRecord
     }
     catch (Exception $e)
     {
-      return false;
+      $transaction->rollBack();
+      return true;
+      // here we return true, because it means that we already have this tag
     }
+    $transaction->commit();
     return true;
   }
 
