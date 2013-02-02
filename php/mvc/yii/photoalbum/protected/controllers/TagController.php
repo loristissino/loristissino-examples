@@ -32,7 +32,7 @@ class TagController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update', 'suggest'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -55,6 +55,12 @@ class TagController extends Controller
 			'model'=>$this->loadModel($id),
 		));
 	}
+  
+  public function actionSuggest()
+  {
+    echo CJSON::encode(Tag::model()->findMatches($_GET['term']));
+    Yii::app()->end();
+  }
 
 	/**
 	 * Creates a new model.

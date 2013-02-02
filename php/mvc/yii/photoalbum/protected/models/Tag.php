@@ -92,5 +92,26 @@ class Tag extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+  
+  
+	/**
+   * Retrieves tags that match a term.
+   * @param string $term a term to use for matching tags.
+	 * @return array tags titles that match the term.
+	 */
+  public function findMatches($term)
+  {
+    $q = new CDbCriteria();
+    $q->addSearchCondition('title', $term);
+    $q->select=array('title');
+    $tags = self::model()->findAll($q);
+
+    $results=array();
+    foreach($tags as $tag)
+    {
+      $results[]=$tag->title;
+    }
+    return $results;
+  }
 
 }
