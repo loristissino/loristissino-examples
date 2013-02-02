@@ -23,6 +23,11 @@ class ExperimentsController extends Controller
   {
     $this->render('i18n', array('path'=>'/foo/bar'));
   }
+  
+  public function actionScreenresolution($width=0, $height=0)
+  {
+     $this->render('screenresolution', array('width'=>$width, 'height'=>$height));
+  }
 
 	// Uncomment the following methods and override them if needed
 	/*
