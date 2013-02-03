@@ -99,8 +99,12 @@ class Tag extends CActiveRecord
    * @param string $term a term to use for matching tags.
 	 * @return array tags titles that match the term.
 	 */
-  public function findMatches($term)
+  public function findMatches($term='')
   {
+    if(''==$term)
+    {
+      return array();
+    }
     $q = new CDbCriteria();
     $q->addSearchCondition('title', $term);
     $q->select=array('title');

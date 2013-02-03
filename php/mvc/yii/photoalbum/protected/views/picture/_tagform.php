@@ -52,6 +52,10 @@
       'id'=>'tag',
       'name'=>'PictureAddTagForm[tag]',
       'source'=>$this->createUrl('tag/suggest'),
+      'options'=>array(
+        'delay'=>500,
+        'minLength'=>2,
+        ),
       'htmlOptions'=>array(
           'size'=>'20'
       ),
