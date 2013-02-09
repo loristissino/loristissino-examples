@@ -12,3 +12,10 @@ function text_underlined($text, $new_lines_before=2, $new_lines_after=1, $symbol
     . str_repeat("\n", $new_lines_after)
     ;
 }
+
+function json_response($object)
+{
+  header('Content-Type: application/json');
+  echo CJSON::encode($object);
+  Yii::app()->end();
+}

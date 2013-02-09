@@ -58,9 +58,7 @@ class TagController extends Controller
   
   public function actionSuggest($term='')
   {
-//    echo CJSON::encode(Tag::model()->findMatches($_GET['term']));
-    echo CJSON::encode(Tag::model()->findMatches($term));
-    Yii::app()->end();
+    json_response(Tag::model()->findMatches($term));
   }
 
 	/**
