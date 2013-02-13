@@ -103,9 +103,13 @@ class PictureController extends Controller
 		if($_SERVER['REQUEST_METHOD']=='POST')
 		{
 			$model->checkFile(Yii::app()->params['picturesDirectory'], true);
+      $this->redirect(array('view','id'=>$model->id));
 		}
+
+		$this->render('fix',array(
+			'model'=>$model,
+		));
     
-    $this->redirect(array('view','id'=>$model->id));
 	}
 
 	/**

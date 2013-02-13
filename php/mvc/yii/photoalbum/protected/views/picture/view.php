@@ -65,10 +65,12 @@ $this->menu=array(
 
 <p><?php echo CHtml::link(
     'Fix picture',
-    $url=CHtml::normalizeUrl(array('picture/fix', 'id'=>$model->id)),
+    $url=CHtml::normalizeUrl(array('picture/fix','id'=>$model->id)),
     array(
       'submit' => $url,
       'title' => 'Check real size and type and fix data base entries',
+      'csrf'=>true,
     )
   )
 ?></p>
+
