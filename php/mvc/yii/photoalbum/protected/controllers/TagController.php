@@ -56,9 +56,14 @@ class TagController extends Controller
 		));
 	}
   
+  /**
+   * Serves a list of suggestions matching the term $term, in form of
+   * a json-encoded object.
+   * @param string $term the string to match
+   */
   public function actionSuggest($term='')
   {
-    json_response(Tag::model()->findMatches($term));
+    $this->serveJson(Tag::model()->findMatches($term));
   }
 
 	/**

@@ -63,11 +63,8 @@ class PictureController extends Controller
 	public function actionServe($id)
 	{
     $picture = $this->loadModel($id);
-    header("Content-Type: image/" . $picture->type);
-    readfile($picture->getFile(Yii::app()->params['picturesDirectory']));
-    return;
+    $this->serveFile('image/' . $picture->type, $picture->getFile(Yii::app()->params['picturesDirectory']));
 	}
-
 
 	/**
 	 * Creates a new model.
