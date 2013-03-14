@@ -26,6 +26,11 @@ Since she wants to send her message, she first computes a session key
 using her own private key and Bob's public key, like here:
 
 The session key is computed as 9904578032905937 ^ 11.
+Its value is 
+89990311908498647045788321790870571946973640519785658861481127970769\
+43851269888414365573845679912196161685840518138931586759580137729961\
+7421026433812938863796708814458356310513
+
 With this session key, Alice can encrypt a message with a symmetric key
 program.
 
@@ -33,9 +38,12 @@ When Bob receives the file, he computes the session key using his own
 private key and Alice's public key, much like Alice did herself.
 
 The session key is computed as 34271896307633 ^ 13,
-which is exactly the same Alice has used.
+which is exactly the same Alice has used:
+89990311908498647045788321790870571946973640519785658861481127970769\
+43851269888414365573845679912196161685840518138931586759580137729961\
+7421026433812938863796708814458356310513
 
-Why the two session keys are equal?
+Why are the two session keys equal?
 
 Because on one side you have
 

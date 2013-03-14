@@ -68,6 +68,9 @@ SKA=$(echo $MATH | bc)
 
 cat <<EOF
 The session key is computed as $MATH.
+Its value is 
+$SKA
+
 With this session key, Alice can encrypt a message with a symmetric key
 program.
 
@@ -80,9 +83,10 @@ MATH="$PA ^ $BOB"
 SKB=$(echo $MATH | bc)
 cat <<EOF
 The session key is computed as $MATH,
-which is exactly the same Alice has used.
+which is exactly the same Alice has used:
+$SKB
 
-Why the two session keys are equal?
+Why are the two session keys equal?
 
 Because on one side you have
 
