@@ -1,0 +1,50 @@
+
+
+ASYMMETRIC CRYPTOGRAPHY: A TALE
+
+This is a demonstration of how asymmetric cryptography works.
+
+Two people, Alice and Bob, want to send messages each other without
+sharing a common secret.
+
+So, they both choose a private key and generate a public key from that,
+sharing only the latter. How can this work?
+
+Imagine that Alice and Bob choose a common prime number, that they both
+know. Here, suppose they chose Y=17.
+
+Alice chooses her own private key as 11.
+
+She computes her public key as (17 ^ 11) = 34271896307633, 
+and then sends it to Bob.
+
+On the other side, Bob computes his public key 
+as 17 ^ 13 = 9904578032905937, and sends it to Alice.
+
+Now, Alice has her own private key (11) and Bob's public key (9904578032905937).
+Since she wants to send her message, she first computes a session key
+using her own private key and Bob's public key, like here:
+
+The session key is computed as 9904578032905937 ^ 11.
+With this session key, Alice can encrypt a message with a symmetric key
+program.
+
+When Bob receives the file, he computes the session key using his own
+private key and Alice's public key, much like Alice did herself.
+
+The session key is computed as 34271896307633 ^ 13,
+which is exactly the same Alice has used.
+
+Why the two session keys are equal?
+
+Because on one side you have
+
+(17 ^ 13) ^ 11
+(which is Bob's public key to the power of Alice's private key)
+
+and on the other side you have
+(17 ^ 11) ^ 13
+(which is Alice's public key to the power of Bob's private key)
+
+And, of course 17 ^ 13 ^ 11 = 17 ^ 11 ^ 13.
+
