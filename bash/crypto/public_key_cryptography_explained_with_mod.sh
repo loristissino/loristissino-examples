@@ -17,8 +17,6 @@ BOB=$2
 Y=$3
 P=$4
 
-prime $ALICE "Alice" || exit 2
-prime $BOB "Bob" || exit 2
 prime $Y "Base" || exit 2
 prime $P "Modulus" || exit 2
 
