@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>JQuery example</title>
+	<meta charset="utf-8" />
+</head>
+
+<body>
+
+<p id="my"></p>
+
+
+<script src="jquery.min.js"></script>
+
+<script>
+
+$(function() {
+  console.log( 'ready!' );
+  
+  var datepicker=$('#my');
+  
+  $.getScript('jquery-ui-i18n.js');
+  
+  console.log('included i18n file');
+  
+  console.log(datepicker.regional['af']['closeText']);
+  
+}
+)
+</script>
+</body>
+</html>

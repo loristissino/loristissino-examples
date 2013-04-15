@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>JQuery example</title>
+	<meta charset="utf-8" />
+</head>
+
+<body>
+
+<div id="block">
+<p class="test">Hello, world, line 1!</p>
+<p class="test">Hello, world, line 2!</p>
+<p class="test">Hello, world, line 3!</p>
+<p class="test">Hello, world, line 4!</p>
+<p class="test">Hello, world, line 5!</p>
+</div>
+
+<script src="jquery.min.js"></script>
+<script>
+$(function() {
+  console.log( 'ready!' );
+
+  $('p').css({
+    color: 'red',
+    border: '1px solid blue'
+  });
+  /*
+  $("#block").animate({
+  width: "+=60px",
+  opacity: 0.4,
+  fontSize: "3em",
+  borderWidth: "10px"
+  }, 3500);
+  */
+
+  console.log('Length: '  + $('p').length);
+  var a = $('p')[0];
+  $(a).text('Something');
+
+  // explicit iteration:
+
+  for(i=0; i< $('p').length; i++)
+  {
+    $($('p')[i]).text($($('p')[i]).text() +'....');
+  }
+  
+  // implicit iteration
+  
+  $('p').html(function(index, oldHtml) {
+    return oldHtml + '!!!!';
+  });
+    
+  
+
+  function k(v, obj)
+  {
+    console.log('item ' + v +  ': ' + $(obj).text());
+  }
+
+  $('p').each(k);
+
+  /*
+  $('p').each(function(i)
+  {
+    console.log('item ' + i + ': ' + $(this).text());
+  }
+  );
+  */
+  
+  //ok: $(document.body.children[0].children[0]).text('ciao');
+
+  //ok: console.log($(document.body.children[0]).html());
+  
+  // not really ok:
+  /*
+  var body = $(document.body);
+  var firstdiv = body.get(0);
+  console.log(firstdiv.innerHTML);
+  */
+  
+  
+  var p = $('<p>', {
+  html: 'Hello, new element!',
+  'class': 'greet'
+  });
+  
+  $(document.body).prepend(p);
+  
+  console.log( 'finished!' );
+
+});
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>d3</title>
+	<meta charset="utf-8" />
+</head>
+
+<style type="text/css">
+svg
+{
+  background-color: yellow;
+}
+
+.seconds
+{
+  stroke: #ff0000;
+  stroke-width: 2;
+}
+
+.minutes
+{
+  stroke: #00ff00;
+  stroke-width: 5;
+}
+
+.hours
+{
+  stroke: #0000ff;
+  stroke-width: 10;
+}
+
+</style>
+
+<body>
+
+<h1>D3 Example</h1>
+<!-- see: http://blog.visual.ly/creating-animations-and-transitions-with-d3-js/ -->
+
+<svg id="clock" xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="300">
+Your browser does not support SVG contents.
+<circle cx="150" cy="150" r="120" fill="white" />
+<line class="minutes" x1="150" y1="150" x2="150" y2="40" />
+<line class="hours" x1="150" y1="150" x2="150" y2="70" />
+<line class="seconds" x1="150" y1="150" x2="150" y2="50" />
+</svg>
+
+<br />
+<input type="button" value="Update clock" onclick="updateClock()" />
+<input type="button" value="Start clock" onclick="startClock()" />
+<input type="button" value="Stop clock" onclick="stopClock()" />
+
+<script src="d3.v3.min.js"></script>
+<script>
+
+var timer_id;
+
+function startClock()
+{
+  timer_id = setInterval(updateClock, 500);
+}
+
+function stopClock()
+{
+  clearInterval(timer_id);
+}
+
+function updateClock()
+{
+  var d = new Date();
+  var s = d.getSeconds();
+  var m = d.getMinutes();
+  var h = (d.getHours()-3) % 12;
+  console.log("updating..." + h + ":" + m + ":" + s);
+  
+  var sp = 2*Math.PI*(s-15)/60;
+  var mp = 2*Math.PI*((m-15)/60+s/3600);
+  var hp = 2*Math.PI*(h/12+mp/720);
+
+  console.log("positions: " + sp + "   " + mp + "    " + hp);
+
+  
+  var second_hand_length = 100;
+  var minute_hand_length = 110;
+  var hour_hand_length = 80;
+  
+  var second_hand = d3.selectAll(".seconds");
+  var minute_hand = d3.selectAll(".minutes");
+  var hour_hand = d3.selectAll(".hours");
+  
+  second_hand
+    .transition()
+    .duration(200)
+    .attr("x2", 150 + Math.cos(sp)*second_hand_length)
+    .attr("y2", 150 + Math.sin(sp)*second_hand_length)
+    ;
+    
+  minute_hand
+    .transition()
+    .duration(200)
+    .attr("x2", 150 + Math.cos(mp)*minute_hand_length)
+    .attr("y2", 150 + Math.sin(mp)*minute_hand_length)
+    ;
+
+  hour_hand
+    .transition()
+    .duration(200)
+    .attr("x2", 150 + Math.cos(hp)*hour_hand_length)
+    .attr("y2", 150 + Math.sin(hp)*hour_hand_length)
+    ;
+  
+  
+}
+
+</script>
+
+</body>
+</html>
