@@ -1,0 +1,1 @@
+A collection of examples in various programming languages, aimed to show different things useful.
