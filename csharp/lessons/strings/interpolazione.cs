@@ -15,7 +15,7 @@ public class Program
     // non tanto bello: si fa uno spezzatino della frase:
     // è difficile da tradurre in altra lingua
     // non è possibile cambiare l'ordine degli elementi (prima l'etè e 
-    // poi il nome senza modificare il codice dell'istruzione)
+    // poi il nome) senza modificare il codice dell'istruzione
 
     Console.WriteLine("{0} ha {1} anni.", name, age);
     // meglio: la frase ha un suo senso compiuto, e i segnaposto
