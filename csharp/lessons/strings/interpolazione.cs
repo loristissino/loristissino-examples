@@ -2,8 +2,8 @@ using System;
 
 public class Program
 {
-	public static void Main()
-	{
+  public static void Main()
+  {
     string name = "Philip";
     int age = 18;
 
@@ -38,5 +38,5 @@ public class Program
     fmt = choice==0 ? $"{name} ha {age} anni." : $"Sono {age} gli anni di {name}.";
     Console.WriteLine(fmt);
     
-	}
+  }
 }
