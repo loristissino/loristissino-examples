@@ -20,6 +20,13 @@ switch ($action)
     break;
   case 'ajaxtest5':
     break;
+  case 'ajaxtest6':
+    break;
+  case 'slowaction':
+    $seconds = getPostValue('seconds', 5);
+    sleep($seconds);
+    header("Location: ?action=index");
+    break;
 	case 'index':
     break;
 	default:
