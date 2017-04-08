@@ -81,6 +81,17 @@ namespace ConsoleApplication1
       showPersons(people.Where(x => x.Gender=='F').ToList(), "Females");
       showPersons(people.Where(x => x.Age<18).ToList(), "Under Age");
       
+      Person p;
+      p = people.Find(x => x.Name == "John");
+      if (p is Person)
+      {
+        Console.WriteLine(p);
+      }
+      else
+      {
+        Console.WriteLine("Not found");
+      }
+      
     }
   }
 }
