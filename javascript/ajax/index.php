@@ -22,12 +22,16 @@ switch ($action)
     break;
   case 'ajaxtest6':
     break;
+  case 'ajaxtest7':
+    break;
   case 'slowaction':
     $seconds = getPostValue('seconds', 5);
     sleep($seconds);
-    header("Location: ?action=index");
+    header("Location: ?action=completed");
     break;
 	case 'index':
+    break;
+  case 'completed':
     break;
 	default:
 		header("Location: ?action=index");
@@ -47,6 +51,9 @@ switch ($action)
 	<h1><?php echo $config['site_name'] ?></h1>
 	<?php include("templates/" . $template . ".php"); ?>
 </body>
+
+<hr />
+<div class="bottomline"><a href="?action=index">Home</a></div>
 
 <script>
   $(document).ready(function(){

@@ -14,3 +14,8 @@ function getPostValue($key, $default)
 {
 	return getValueFromArray($_POST, $key, $default);
 }
+
+function getSessionValue($key, $default)
+{
+	return getValueFromArray($_SESSION, $key, $default);
+}
