@@ -24,6 +24,8 @@ switch ($action)
     break;
   case 'ajaxtest7':
     break;
+  case 'ajaxtest8':
+    break;
   case 'slowaction':
     $seconds = getPostValue('seconds', 5);
     sleep($seconds);
