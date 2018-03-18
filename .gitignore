@@ -4,5 +4,6 @@ eserciziofinale.cpp
 *.exe
 bin/
 obj/
+utils/
 
 
