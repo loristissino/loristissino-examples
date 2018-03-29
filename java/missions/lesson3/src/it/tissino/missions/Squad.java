@@ -21,9 +21,10 @@ public class Squad {
 
     public ArrayList<Agent> getAgents()
     {
-        return _agents;//.size();
+        return _agents;
     }
 
+    @Override
     public String toString()
     {
         return "Squad " + _name;

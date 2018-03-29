@@ -16,6 +16,7 @@ public class CaesarEncryptionManager extends EncryptionManager {
      * Gets the cypher used.
      * @return the cypher used.
      */
+    @Override
     public String getCypher()
     {
         return "CAESAR";
