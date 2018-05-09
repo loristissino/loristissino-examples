@@ -1,0 +1,4 @@
+12	Lucia	Bianchi	30
+35	Mario	Rossi	45
+7	Giovanna	Bruni	28
+19	Alessandro	Verdi	41
