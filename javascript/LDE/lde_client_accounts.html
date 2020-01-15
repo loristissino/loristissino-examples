@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<title>LDE Client - Accounts</title>
+
+<script>
+    
+    var timer;
+    
+    var url = "https://learndoubleentry.org/api";
+    var slug = "44yymj406gjpuc1izqa8cjluqezt72f9";
+    var apikey = "E5C80603AE3D42561367AEB9E2560B93";
+
+    const http = new XMLHttpRequest();
+    
+    var accountsEl;
+        
+    function addChild(target, element) {
+        var e = document.createElement(element.type);
+        for (property in element.properties) {
+            e[property] = element.properties[property];
+        }
+        target.appendChild(e);
+    }
+
+    function fetchAccounts() {
+        accountsEl.innerHTML = "Fetching the accounts...";
+        http.open("GET", url+"/accounts/slug/" + slug);
+        http.setRequestHeader('X-ApiKey', apikey)
+        http.send();
+        http.onload = function() {
+            // accountsEl.innerHTML = "Status: " + http.status;
+            // TODO: check the status before trying to display the accounts
+            
+            var accounts = JSON.parse(http.responseText);
+            
+            // TODO: filter the accounts keeping the ones that have type 0 and are selectable
+            // accounts = accounts.filter( a => a.type==0 );
+            
+            for (var i = 0; i<accounts.length; i++) {
+                var a = accounts[i];
+                // TODO: use the alternative syntax accounts.forEach() 
+                
+                addChild(accountsEl, {'type': 'p', 'properties': {'innerHTML': a.code + ': ' + a.currentname}});
+                // TODO: use a template element 
+                // see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
+                
+            }
+        };
+    }
+    
+    function setup() {
+        accountsEl=document.getElementById("accounts");
+        // TODO enable the button
+        // see https://www.w3schools.com/jsref/prop_pushbutton_disabled.asp
+    }
+    
+</script>
+
+</head>
+
+<body onload="setup()">
+
+<h1>LDE Client - Accounts</h1>
+
+<div id="accounts">
+    
+</div>
+
+<button id="fetchAccountsButton" onclick="fetchAccounts()" disabled>Fetch accounts</button>
+
+</body>
+
+</html>
+
