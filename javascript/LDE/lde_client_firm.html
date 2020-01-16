@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<title>LDE Client - Firm</title>
+
+<script>
+    
+    var url = "https://learndoubleentry.org/api";
+    var slug = "44yymj406gjpuc1izqa8cjluqezt72f9";
+    var apikey = "E5C80603AE3D42561367AEB9E2560B93";
+    
+    var firmEl;
+
+    const http = new XMLHttpRequest();
+    
+    function updateFirm() {
+        firmEl.innerHTML = "Updating the firm...";
+        http.open("PUT", url+"/firm/slug/" + slug);
+        http.setRequestHeader('X-ApiKey', apikey);
+        
+        var firmInfo = { name: "The brand new name of my firm" };
+        // TODO: take the new name from an input field
+        
+        http.send(JSON.stringify(firmInfo));
+        
+        http.onload = function() {
+            // TODO: check the status of the request
+
+            firmEl.innerHTML = "Updated!";
+        };
+    }
+    
+    function setup() {
+        firmEl=document.getElementById("firm");
+        // TODO: fetch the data from the server and put the current name in the field
+    }
+    
+</script>
+
+</head>
+
+<body onload="setup()">
+
+<h1>LDE Client - Firm</h1>
+
+<div id="firm">
+    
+</div>
+
+<button id="updateFirmButton" onclick="updateFirm()">Update Firm</button>
+
+</body>
+
+</html>
+
