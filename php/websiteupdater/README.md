@@ -6,7 +6,7 @@ the website via a php script, this thing could be a solution.
 Basically, after every git commit, you use the client script from the
 command line, like this:
 
-	php website_updater.php _commit-id_
+	php website_updater.php commit-id
 	
 This script executes `git diff-tree` and obtains a list of the added or
 modified files, generates a json file with the contents of these files,
