@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic HTML5 Client</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/site.css">
+    <script>
+
+let endPoint = 'server/index.php';
+
+async function loadData(data) {
+    let url = endPoint + '?data=' + data;
+    let response = await fetch(url);
+    return await response.json();
+}
+
+async function placeOrder(data) {
+    let url = endPoint + '?data=orders';
+    let response = await fetch(url, {
+        method: 'post',
+        body: JSON.stringify(data),
+    });
+    return await response.json();
+}
+
+async function setup() {
+
+    let ingredients_element = document.querySelector('#ingredients');
+    let ingredient_template = document.querySelector('#ingrendient_template');
+    let ingredients = await loadData('ingredients');
+
+    ingredients_object = {}; // used for look-up
+
+    ingredients.forEach(function(value) {
+        let clone = ingredient_template.content.cloneNode(true);
+        clone.querySelector('input').setAttribute('id', value.id);
+        clone.querySelector('label').innerHTML = value.name;
+        ingredients_element.appendChild(clone);
+        ingredients_object[value.id] = value.name;
+    });
+
+    let pizzas_element = document.querySelector('#pizzas');
+    let pizza_template = document.querySelector('#pizza_template');
+    let pizzas_table_body_element = document.querySelector('#pizzas_table_body');
+    let pizza_row_template = document.querySelector('#pizza_row_template');
+    let pizzas = await loadData('pizzas');
+
+    pizzas.forEach(function(value) {
+        let clone = pizza_template.content.cloneNode(true);
+        clone.querySelector('option').setAttribute('value', value.id);
+        clone.querySelector('option').innerHTML = value.name;
+        pizzas_element.appendChild(clone);
+        
+        let ingredients_for_this_pizza = [];
+        value.ingredients.forEach(function(v) {
+            ingredients_for_this_pizza.push(ingredients_object[v]);
+        });
+        
+        clone = pizza_row_template.content.cloneNode(true);
+        let fields = clone.querySelectorAll('td');
+        fields[0].innerHTML = value.name;
+        fields[1].innerHTML = ingredients_for_this_pizza.join(", ");
+        fields[2].innerHTML = value.price.toFixed(2);
+        pizzas_table_body_element.appendChild(clone);
+    });
+    
+    let order_button_element = document.querySelector('#order_button');
+    order_button_element.addEventListener('click', async function() {
+        //alert("ordering " + pizzas_element.value + "...");
+        document.querySelector('#loader').classList.remove("hidden");
+        result = await placeOrder(pizzas_element.value);
+        console.log(result);
+        let order = document.createElement('div');
+        let datetime = new Date(result.happened_at * 1000); // The Unix timestamp is expressed in seconds
+        order.innerHTML = datetime.toLocaleTimeString("it-IT", {"hour": "2-digit", "minute": "2-digit", "second": "2-digit"});
+        
+        if (result.status == 'accepted') {
+            order.innerHTML += " 🍕 order id: " + result.id + " (pizza id: "+ result.data + ")";
+        }
+        else {
+            order.innerHTML += " ☹️ " + result.message;
+        }
+            
+        document.querySelector('#orders').appendChild(order);
+        
+        document.querySelector('#loader').classList.add("hidden");
+    });
+
+}    
+    
+    </script>
+    
+</head>
+<body onload="setup()">
+
+<!-- Side Navigation -->
+<nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-center" style="display:none" id="mySidebar">
+  <h1 class="w3-xxxlarge w3-text-theme">Side Navigation</h1>
+  <button class="w3-bar-item w3-button" onclick="w3_close()">Close <i class="fa fa-remove"></i></button>
+  <a href="#" class="w3-bar-item w3-button">Link 1</a>
+  <a href="#" class="w3-bar-item w3-button">Link 2</a>
+  <a href="#" class="w3-bar-item w3-button">Link 3</a>
+  <a href="#" class="w3-bar-item w3-button">Link 4</a>
+</nav>
+
+<!-- Header -->
+<header class="w3-container w3-theme w3-padding" id="myHeader">
+  <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i> 
+  <div class="w3-center">
+      <h4>Sample Client</h4>
+      <h1 class="w3-xxxlarge w3-animate-bottom">Pizza!</h1>
+  </div>
+</header>
+     
+<header class="w3-container w3-blue-grey">
+  <h2>Choose your pizza</h2>
+</header>
+
+<div class="w3-row-padding">
+
+<div class="w3-large">
+<form class="w3-container w3-card-4">
+  <h2>What are you eating?</h2>
+
+  <div class="w3-row">
+    <div class="w3-large">
+        <p>Pick one of our specialties:</p>
+        <select id="pizzas">
+            <template id="pizza_template"><option></option></template>
+        </select>
+        <br><br>
+    </div>
+  </div>
+  
+  <div class="w3-row">
+      <div class="w3-third">
+        <p>... or choose your ingredients:</p>
+          <div id="ingredients">
+              <template id="ingrendient_template">
+                <div>
+                    <input id="to" class="w3-check" type="checkbox">
+                    <label>Tomato</label>
+                </div>
+              </template>
+          </div>
+      </div>
+
+  <div class="w3-third">
+      <p>Options</p>
+    <input id="indoor" class="w3-radio" type="radio" name="location" value="indoor" checked>
+    <label>Indoor</label>
+    <br>
+    <input id="outdoor" class="w3-radio" type="radio" name="location" value="outdoor">
+    <label>Outdoor</label>
+    <br>
+    <input id="indoor" class="w3-radio" type="radio" name="location" value="indoor" checked>
+    <label>Delivered</label>
+    <br>
+    <br>
+    <input id="childre" class="w3-check" type="checkbox">
+    <label>For children</label>
+  </div>
+
+  <div class="w3-third">
+      <div id="orders">
+      </div>
+      <div id="loader" class="hidden"><img src="images/ajax-loader.gif" /></div>
+  </div>
+
+  </div>  
+
+  <hr />
+  <button id="order_button">Place order</button>
+  <hr />
+
+  </div>
+
+</form>
+</div>
+
+</div>
+
+
+<div class="w3-container">
+  <hr>
+  <div class="w3-center">
+    <h2>Pizzas</h2>
+  </div>
+<div class="w3-responsive w3-card-4">
+<table class="w3-table w3-striped w3-bordered">
+<thead>
+<tr class="w3-theme">
+  <th>Name</th>
+  <th>Ingredients</th>
+  <th>Price</th>
+</tr>
+</thead>
+<tbody id="pizzas_table_body">
+<template id="pizza_row_template">
+    <tr>
+      <td>Margue</td>
+      <td>Something, something else</td>
+      <td class="amount">10</td>
+    </tr>
+</template>
+</tbody>
+</table>
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-container w3-theme-dark w3-padding-16">
+  <h3>Pizza Store</h3>
+  <p>Info... <a href="http://www.example.com/" target="_blank">Pizza Store Example.com</a></p>
+  <div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-theme-light w3-padding">Go To Top</span>    
+    <a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+
+<!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
+<script>
+// Side navigation
+function w3_open() {
+  var x = document.getElementById("mySidebar");
+  x.style.width = "100%";
+  x.style.fontSize = "40px";
+  x.style.paddingTop = "10%";
+  x.style.display = "block";
+}
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
+</body>
+</html>
