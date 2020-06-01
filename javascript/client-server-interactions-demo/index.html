@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/site.css">
     <script>
 
-let endPoint = 'server/index.php';
+let endPoint = 'http://127.0.0.1/5asia/project/server/index.php';
 
 async function loadData(data) {
     let url = endPoint + '?data=' + data;
@@ -21,10 +21,11 @@ async function loadData(data) {
 async function placeOrder(data) {
     let url = endPoint + '?data=orders';
     let response = await fetch(url, {
-        method: 'post',
+        method: 'POST',
         body: JSON.stringify(data),
     });
-    return await response.json();
+    let result = await response.json();
+    return result;
 }
 
 async function setup() {
@@ -70,7 +71,6 @@ async function setup() {
     
     let order_button_element = document.querySelector('#order_button');
     order_button_element.addEventListener('click', async function() {
-        //alert("ordering " + pizzas_element.value + "...");
         document.querySelector('#loader').classList.remove("hidden");
         result = await placeOrder(pizzas_element.value);
         console.log(result);
@@ -123,16 +123,16 @@ async function setup() {
 <div class="w3-row-padding">
 
 <div class="w3-large">
-<form class="w3-container w3-card-4">
+<!--form class="w3-container w3-card-4"-->
   <h2>What are you eating?</h2>
 
   <div class="w3-row">
     <div class="w3-large">
         <p>Pick one of our specialties:</p>
         <select id="pizzas">
-            <template id="pizza_template"><option></option></template>
+            <template id="pizza_template"><option>Sample value</option></template>
         </select>
-        <br><br>
+        <br /><br />
     </div>
   </div>
   
@@ -142,7 +142,7 @@ async function setup() {
           <div id="ingredients">
               <template id="ingrendient_template">
                 <div>
-                    <input id="to" class="w3-check" type="checkbox">
+                    <input id="to" class="w3-check" type="checkbox" />
                     <label>Tomato</label>
                 </div>
               </template>
@@ -151,24 +151,24 @@ async function setup() {
 
   <div class="w3-third">
       <p>Options</p>
-    <input id="indoor" class="w3-radio" type="radio" name="location" value="indoor" checked>
+    <input id="indoor" class="w3-radio" type="radio" name="location" value="indoor" checked />
     <label>Indoor</label>
-    <br>
-    <input id="outdoor" class="w3-radio" type="radio" name="location" value="outdoor">
+    <br />
+    <input id="outdoor" class="w3-radio" type="radio" name="location" value="outdoor" />
     <label>Outdoor</label>
-    <br>
-    <input id="indoor" class="w3-radio" type="radio" name="location" value="indoor" checked>
+    <br />
+    <input id="delivered" class="w3-radio" type="radio" name="location" value="indoor" checked />
     <label>Delivered</label>
-    <br>
-    <br>
-    <input id="childre" class="w3-check" type="checkbox">
+    <br />
+    <br />
+    <input id="childre" class="w3-check" type="checkbox" />
     <label>For children</label>
   </div>
 
   <div class="w3-third">
       <div id="orders">
       </div>
-      <div id="loader" class="hidden"><img src="images/ajax-loader.gif" /></div>
+      <div id="loader" class="hidden"><img src="images/ajax-loader.gif" alt="loading..." /></div>
   </div>
 
   </div>  
@@ -177,40 +177,38 @@ async function setup() {
   <button id="order_button">Place order</button>
   <hr />
 
-  </div>
-
-</form>
+<!--/form-->
 </div>
 
 </div>
 
 
 <div class="w3-container">
-  <hr>
-  <div class="w3-center">
+    <hr />
+    <div class="w3-center">
     <h2>Pizzas</h2>
-  </div>
-<div class="w3-responsive w3-card-4">
-<table class="w3-table w3-striped w3-bordered">
-<thead>
-<tr class="w3-theme">
-  <th>Name</th>
-  <th>Ingredients</th>
-  <th>Price</th>
-</tr>
-</thead>
-<tbody id="pizzas_table_body">
-<template id="pizza_row_template">
-    <tr>
-      <td>Margue</td>
-      <td>Something, something else</td>
-      <td class="amount">10</td>
-    </tr>
-</template>
-</tbody>
-</table>
+    </div>
+    <div class="w3-responsive w3-card-4">
+    <table class="w3-table w3-striped w3-bordered">
+        <thead>
+            <tr class="w3-theme">
+              <th>Name</th>
+              <th>Ingredients</th>
+              <th>Price</th>
+            </tr>
+        </thead>
+    <tbody id="pizzas_table_body">
+        <template id="pizza_row_template">
+            <tr>
+              <td>Margue</td>
+              <td>Something, something else</td>
+              <td class="amount">10</td>
+            </tr>
+        </template>
+    </tbody>
+    </table>
+    </div>
 </div>
-
 
 <!-- Footer -->
 <footer class="w3-container w3-theme-dark w3-padding-16">
