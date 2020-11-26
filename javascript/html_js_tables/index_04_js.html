@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.number {
+  text-align: right;
+}
+
+.info {
+  font-style: italic;
+}
+
+tfoot {
+  background-color: #ADD8E6;
+}
+
+</style>
+<script>
+
+let url="https://www.tissino.it/mattiussipertini/5asia/?sleep=0";
+
+async function body_load() {
+  let pizzas = await loadPizzas();
+  if (pizzas) {
+    showPizzas(pizzas);
+  }
+}
+
+async function loadPizzas() {
+  let response = await fetch(url);
+  if (response.ok) {
+    return await response.json();
+  }
+  return false; // TODO Fix this: what should we do in case of error?
+}
+
+function showPizzas(pizzas) {
+  console.table(pizzas);
+  let template = document.querySelector("#pizzaTemplate");
+  console.log(template);
+  let target = document.querySelector("#pizzaTableBody");
+  
+  pizzas.forEach(function(pizza) {
+    let element = template.content.cloneNode(true);
+    console.log(element);
+    console.log(element.querySelectorAll('td'));
+    element.querySelector('.pizzaName').innerHTML = pizza.name;
+    element.querySelector('.pizzaType').innerHTML = pizza.type;
+    element.querySelector('.pizzaSize').innerHTML = pizza.size;
+    element.querySelector('.pizzaNumber').innerHTML = 1;  // TODO: group the pizza by type before showing the table
+    target.appendChild(element);
+  });
+  
+  document.querySelector("#totalNumber").innerHTML = pizzas.length;
+  
+}
+
+</script>
+</head>
+<body onload="body_load()">
+
+<h1>Pizza Mattiussi</h1>
+
+<table>
+  <caption class="info">Ordered Pizzas</caption>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Size</th>
+      <th>Number</th>
+    </tr>
+  </thead>
+  <tbody id="pizzaTableBody">
+    <template id="pizzaTemplate">
+      <tr>
+        <td class="pizzaName">Tegame</td>
+        <td class="pizzaType">normal</td>
+        <td class="pizzaSize">big</td>
+        <td class="number pizzaNumber">1</td>
+      </tr>
+    </template>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3" class="info">Total number</td>
+      <td class="number" id="totalNumber">0</td>
+    </tr>
+  </tfoot>
+</table>
+
+</body>
+</html>

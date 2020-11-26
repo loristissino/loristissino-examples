@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- based on the example from https://www.w3schools.com/html/html_tables.asp -->
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.number {
+  text-align: right;
+}
+</style>
+</head>
+<body>
+
+<h1>Pizza Mattiussi</h1>
+
+<table>
+  <caption>Ordered Pizzas</caption>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Size</th>
+    <th>Number</th>
+  </tr>
+  <tr>
+    <td>Tegame</td>
+    <td>normal</td>
+    <td>big</td>
+    <td class="number">1</td>
+  </tr>
+  <tr>
+    <td>Calzone</td>
+    <td>kamut</td>
+    <td>medium</td>
+    <td class="number">2</td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.number {
+  text-align: right;
+}
+
+.info {
+  font-style: italic;
+}
+
+tfoot {
+  background-color: #ADD8E6;
+}
+
+</style>
+</head>
+<body>
+
+<h1>Pizza Mattiussi</h1>
+
+<table>
+  <caption class="info">Ordered Pizzas</caption>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Size</th>
+      <th>Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tegame</td>
+      <td>normal</td>
+      <td>big</td>
+      <td class="number">1</td>
+    </tr>
+    <tr>
+      <td>Calzone</td>
+      <td>kamut</td>
+      <td>medium</td>
+      <td class="number">2</td>
+    </tr>
+    <tr>
+      <td>Red</td>
+      <td>kamut</td>
+      <td>big</td>
+      <td class="number">3</td>
+    </tr>
+    <tr>
+      <td>Cacciatore</td>
+      <td>normal</td>
+      <td>medium</td>
+      <td class="number">1</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3" class="info">Total number</td>
+      <td class="number">7</td>
+    </tr>
+  </tfoot>
+</table>
+
+</body>
+</html>
