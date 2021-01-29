@@ -5,7 +5,7 @@ $zip = new ZipArchive();
 
 $zips_dir = "zips"; // nome della directory dove verranno messi i file zip
 
-$filename = $zips_dir . DIRECTORY_SEPARATOR . date("Ymd-his") . ".zip";
+$filename = $zips_dir . DIRECTORY_SEPARATOR . date("Ymd-His") . ".zip";
 // nome del file che verrà creato da questo script
 
 if (!is_dir($zips_dir)) {
