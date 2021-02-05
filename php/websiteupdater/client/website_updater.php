@@ -15,13 +15,25 @@ $output = '';
 
 exec($command, $output);
 
-
 $request = [];
 
 foreach ($output as $line)
 {
-	$request[$line]=file_get_contents($line);
+	$request[$line]=file_exists($line) ? base64_encode(file_get_contents($line)) : '';
 }
+
+/*
+if (sizeof($argv)<2)
+{
+	die("You must specify the file path\n");
+}
+
+$file = $argv[1];
+
+$request[$file] = file_exists($file) ? base64_encode(file_get_contents($file)) : '';
+
+*/
+
 
 $data = json_encode($request);
 
