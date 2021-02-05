@@ -2,6 +2,8 @@
 
 $server = 'https://example.com/updater_SECRETKEY.php';  // replace SECRETKEY with a value you choose
 
+// USE WITH GIT
+
 if (sizeof($argv)<2)
 {
 	die("You must specify the commit id\n");
@@ -23,6 +25,9 @@ foreach ($output as $line)
 }
 
 /*
+
+// USE WITHOUT GIT, WITH A SINGLE FILE PATH SPECIFIED ON THE COMMAND LINE
+
 if (sizeof($argv)<2)
 {
 	die("You must specify the file path\n");
