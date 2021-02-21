@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Ascii cast</title>
+<link rel="stylesheet" type="text/css" href="asciinema-player.css" />
+</head>
+
+<body>
+  <asciinema-player id="videoplayer" src="test.cast" cols="80" rows="24" font-size="medium"></asciinema-player>
+  <br />
+  <audio id="audioplayer">
+    <source src="test.ogg" type="audio/ogg">
+  </audio>
+  
+  <script src="asciinema-player.js"></script>
+  <script>
+  let videoplayer=document.getElementById('videoplayer');
+  let audioplayer=document.getElementById('audioplayer');
+  videoplayer.addEventListener('play', function(e) {
+    // console.log("it's playing");
+    // console.log("we're at", this.currentTime);
+    audioplayer.currentTime = this.currentTime;
+    audioplayer.play();
+    })
+  videoplayer.addEventListener('pause', function(e) {
+    // console.log("it's paused");
+    audioplayer.pause();
+  })
+  
+  </script>
+</body>
+
+</html>
