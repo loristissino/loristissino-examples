@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-public class Main {
+public class Graphics {
 
     public static void main(String[] args) {
         String fileName ="test.png";
