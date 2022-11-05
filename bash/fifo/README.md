@@ -16,6 +16,10 @@ output their messages, for us to read, on their standard error.
 We need a named pipe (you can create one with `mkfifo mypipe`) to let 
 the processes have a double-way communication.
 
+## C\# version
+
+The programs must be compiled with `mcs`. Then:
+
     $ mono guesser.exe < mypipe | mono tester.exe > mypipe
     Tester  - Number to guess set to 38
     Guesser - Trying 50, my bounds being 1...100
@@ -64,4 +68,10 @@ as follows:
     Tester  - Handling input '37'
     Tester  - Handling input '31'
     Tester  - Number guessed in 4 attempts.
+
+## Python version
+
+Set execution permissions to the python files. Then:
+
+    ./guesser.py < mypipe | ./tester.py > mypipe
 
