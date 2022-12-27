@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TmcMsg", "TmcMsg\TmcMsg.csproj", "{44A3ED8D-555C-440D-8865-F8960EA11DA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TmcWinMessages", "TmcWinMessages\TmcWinMessages.csproj", "{CF5A9310-FCE3-4579-A7B0-8724127EAA0D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44A3ED8D-555C-440D-8865-F8960EA11DA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44A3ED8D-555C-440D-8865-F8960EA11DA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44A3ED8D-555C-440D-8865-F8960EA11DA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44A3ED8D-555C-440D-8865-F8960EA11DA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF5A9310-FCE3-4579-A7B0-8724127EAA0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF5A9310-FCE3-4579-A7B0-8724127EAA0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF5A9310-FCE3-4579-A7B0-8724127EAA0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF5A9310-FCE3-4579-A7B0-8724127EAA0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {976E83CB-864A-4CA9-929A-66FFFD8592DA}
+	EndGlobalSection
+EndGlobal
