@@ -21,23 +21,23 @@ the processes have a double-way communication.
 The programs must be compiled with `mcs`. Then:
 
     $ mono guesser.exe < mypipe | mono tester.exe > mypipe
+    Guesser - Trying 50, my bounds being 0...101 (excluded)
     Tester  - Number to guess set to 38
-    Guesser - Trying 50, my bounds being 1...100
     Tester  - Handling input '50'
     Guesser - Handling input '<'
-    Guesser - Trying 25, my bounds being 1...50
+    Guesser - Trying 25, my bounds being 0...50 (excluded)
     Tester  - Handling input '25'
     Guesser - Handling input '>'
-    Guesser - Trying 37, my bounds being 25...50
+    Guesser - Trying 37, my bounds being 25...50 (excluded)
     Tester  - Handling input '37'
     Guesser - Handling input '>'
-    Guesser - Trying 43, my bounds being 37...50
+    Guesser - Trying 43, my bounds being 37...50 (excluded)
     Tester  - Handling input '43'
     Guesser - Handling input '<'
-    Guesser - Trying 40, my bounds being 37...43
+    Guesser - Trying 40, my bounds being 37...43 (excluded)
     Tester  - Handling input '40'
     Guesser - Handling input '<'
-    Guesser - Trying 38, my bounds being 37...40
+    Guesser - Trying 38, my bounds being 37...40 (excluded)
     Tester  - Handling input '38'
     Tester  - Number guessed in 6 attempts.
     Guesser - Handling input '!'
@@ -50,13 +50,13 @@ as follows:
 
     # from one terminal
     $ mono guesser.exe > pipeg2t < pipet2g 
-    Guesser - Trying 50, my bounds being 1...100
+    Guesser - Trying 50, my bounds being 0...101 (excluded)
     Guesser - Handling input '<'
-    Guesser - Trying 25, my bounds being 1...50
+    Guesser - Trying 25, my bounds being 0...50 (excluded)
     Guesser - Handling input '>'
-    Guesser - Trying 37, my bounds being 25...50
+    Guesser - Trying 37, my bounds being 25...50 (excluded)
     Guesser - Handling input '<'
-    Guesser - Trying 31, my bounds being 25...37
+    Guesser - Trying 31, my bounds being 25...37 (excluded)
     Guesser - Handling input '!'
     Guesser - Guessed it! :-)
 
