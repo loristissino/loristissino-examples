@@ -7,12 +7,12 @@ def printOnStderr(text):
     print(text, file=sys.stderr)
 
 def run():
-    left=1;
-    right=100;
+    left=0;
+    right=101;
     while True:
         myGuess = (right+left)//2;
         print(myGuess);
-        printOnStderr(f"Guesser - Trying {myGuess}, my bounds being {left}...{right}");
+        printOnStderr(f"Guesser - Trying {myGuess}, my bounds being {left}...{right} (excluded)");
         response = input();
 
         printOnStderr(f"Guesser - Handling input '{response}'");

@@ -4,14 +4,14 @@ public class Guesser
 {
     public static void Main(string[] args)
     {
-        int left=1;
-        int right=100;
+        int left=0;
+        int right=101;
         int myGuess;
         string response;
         while (true) {
             myGuess = (right+left)/2;
             Console.WriteLine(myGuess);
-            Console.Error.WriteLine($"Guesser - Trying {myGuess}, my bounds being {left}...{right}");
+            Console.Error.WriteLine($"Guesser - Trying {myGuess}, my bounds being {left}...{right} (excluded)");
             response = Console.ReadLine();
             if (string.IsNullOrEmpty(response)) {
                 continue;
