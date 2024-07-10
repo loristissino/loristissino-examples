@@ -1,0 +1,12 @@
+<templates>
+  <div t-name="Hello">
+    <h1>Hello Owl</h1>
+    <div class="people-list">
+        <ul>
+        <t t-foreach="people" t-as="person" t-key="person.id">
+            <li><span><t t-esc="person.name"/></span></li>
+        </t>
+        </ul>
+    </div>
+  </div>
+</templates>

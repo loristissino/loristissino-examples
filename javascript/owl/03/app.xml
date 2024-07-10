@@ -1,0 +1,3 @@
+<templates>
+  <div t-name="Hello">Hello Owl</div>
+</templates>

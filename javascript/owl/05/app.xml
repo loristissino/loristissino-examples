@@ -1,0 +1,26 @@
+<templates>
+  <!-- https://github.com/odoo/owl/blob/master/doc/reference/templates.md -->
+  <div t-name="Hello">
+    <h1>Hello Owl</h1>
+    <div class="people-list">
+        <ul>
+        <t t-foreach="people" t-as="person" t-key="person.id">
+            <li><span class="person"><t t-esc="person.name"/></span></li>
+        </t>
+        </ul>
+    </div>
+    <div class="cities-list">
+        <t t-if="cities.length > 0">
+            <ol>
+            <t t-set="number" t-value="1001"/>
+            <t t-foreach="cities" t-as="city" t-key="city">
+                <li>(<t t-esc="number"/><t t-set="number" t-value="number +1"/>) <span class="city"><t t-esc="city"/></span></li>
+            </t>
+            </ol>
+        </t>
+        <t t-else="">
+            <p>No cities.</p>
+        </t>
+    </div>
+  </div>
+</templates>
