@@ -1,8 +1,21 @@
 const { Component, mount, xml } = owl;
 
 // Owl Components
+
+class Person extends Component {
+    static template = "Person";
+    static props = ["name"];
+
+    doSomething(ev) {
+        console.log("clicked", ev.target);
+        alert(`clicked on ${ev.target.innerHTML}`);
+    }
+    
+}
+
 class Root extends Component {
   static template = "Hello";
+  static components = { Person };
   
   people = [
     {id: 1, name: 'Alice'},
@@ -15,6 +28,7 @@ class Root extends Component {
   cities = [ 'Rome', 'New York', 'Tallinn', 'Paris'];
   
 }
+
 
 (async function() {
     const xml = await fetch('app.xml');
