@@ -42,7 +42,7 @@ The `Person` component has a method that handles the click on the name of the pe
 
 ## Lesson 9
 
-We add a clickCount prop to know how many times a person name has been clicked on. The prop is given the initial value 0 from the caller.
+We add a `clickCount` prop to know how many times a person name has been clicked on. The prop is given the initial value 0 from the caller.
 
 ## Lesson 10
 
@@ -50,10 +50,7 @@ We introduce the concept of optional prop. Optional props can have a default val
 
 ## Lesson 11
 
-The magic begins. The clickCounter is now an object proxied by the framework via the `useState` feature of Owl. In the `increaseClickCounter` method we just take care of the application logic, because the view updates itself without us doing anything.
-
-
-
+The magic begins. We use `clickCounter` instead of the `clickCount`. It is an object proxied by the framework via the `useState` feature of Owl. In the `increaseClickCounter` method we just take care of the application logic, because the view updates itself without us doing anything.
 
 
  
