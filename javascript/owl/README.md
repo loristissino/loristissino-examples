@@ -84,7 +84,9 @@ Added a Delete button that allows to remove a person from the list.
 
 Added an input field for the input of a new name to be put in the list of people.
 
+## Lesson 20
 
+Removed buttons for a more pleaseant look.
 
 
 

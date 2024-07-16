@@ -1,0 +1,33 @@
+body {
+    background-color: #90EE90;
+    font-family: Verdana, Arial, sans-serif;
+    padding: 30px;
+}
+span.person {
+    background-color: #ADD8E6;
+}
+span.city {
+    background-color: #FFA500;
+}
+span.counter {
+    margin-left: 10px;
+}
+
+span.id {
+    margin-right: 10px;
+}
+
+.highlighted {
+    background-color: yellow;
+}
+
+button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+span.delete {
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
