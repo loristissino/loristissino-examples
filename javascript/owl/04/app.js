@@ -2,14 +2,14 @@ const { Component, mount, xml } = owl;
 
 // Owl Components
 class Root extends Component {
-  static template = "Hello";
-  
-  people = [
-    {id: 1, name: 'Alice'},
-    {id: 2, name: 'Bob'},
-    {id: 3, name: 'Charlie'},
-    {id: 4, name: 'Donna'},
-  ];
+    static template = "Hello";
+
+    people = [
+        {id: 1, name: 'Alice'},
+        {id: 2, name: 'Bob'},
+        {id: 3, name: 'Charlie'},
+        {id: 4, name: 'Donna'},
+    ];
 }
 
 async function owlSetup() {

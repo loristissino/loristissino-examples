@@ -1,8 +1,8 @@
 const { Component, mount, xml, useState, reactive } = owl;
 
-// App common function
-
 const appLocalStoragePrefix = "MyApp_";
+
+// App common functions
 
 function useStoredState(key, initialState) {
       key = appLocalStoragePrefix + key;
@@ -36,18 +36,18 @@ class Person extends Component {
 }
 
 class Root extends Component {
-  static template = "Hello";
-  static components = { Person };
-  
-  people = [
-    {id: 1, name: 'Alice'},
-    {id: 2, name: 'Bob'},
-    {id: 3, name: 'Charlie'},
-    {id: 4, name: 'Donna'},
-  ];
-  
-  // we may have a list of cities or not... the template will take care of that
-  cities = [ 'Rome', 'New York', 'Tallinn', 'Paris'];
+    static template = "Hello";
+    static components = { Person };
+
+    people = [
+        {id: 1, name: 'Alice'},
+        {id: 2, name: 'Bob'},
+        {id: 3, name: 'Charlie'},
+        {id: 4, name: 'Donna'},
+    ];
+
+    // we may have a list of cities or not... the template will take care of that
+    cities = [ 'Rome', 'New York', 'Tallinn', 'Paris'];
   
 }
 

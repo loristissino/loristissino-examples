@@ -1,15 +1,15 @@
 <templates>
-  <!-- https://github.com/odoo/owl/blob/master/doc/reference/templates.md -->
-  <div t-name="Person">
-    <div>
-        <span class="id" t-ref="id"><t t-esc="props.id"></t></span> 
-        <span class="person" t-on-click="increaseClickCounter"><t t-esc="props.name" /></span>
-        <!--span class="counter"><t t-esc="clickCounter.value" /></span-->
-        <span class="counter"><t t-esc="counter" /></span>
+    <!-- https://github.com/odoo/owl/blob/master/doc/reference/templates.md -->
+    <div t-name="Person">
+        <div>
+            <span class="id" t-ref="id"><t t-esc="props.id"></t></span> 
+            <span class="person" t-on-click="increaseClickCounter"><t t-esc="props.name" /></span>
+            <!--span class="counter"><t t-esc="clickCounter.value" /></span-->
+            <span class="counter"><t t-esc="counter" /></span>
+        </div>
     </div>
-  </div>
-  
-  <div t-name="Hello">
+
+    <div t-name="Hello">
     <h1>Hello Owl</h1>
     <h2 t-ref="lastClicked">...</h2>
     <div class="people-list">
@@ -25,5 +25,5 @@
         </t>
         </ol>
     </div>
-  </div>
+    </div>
 </templates>
