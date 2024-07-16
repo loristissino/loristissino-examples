@@ -80,6 +80,12 @@ We centralize the management of the list of people in the Root container. The li
 
 Added a Delete button that allows to remove a person from the list.
 
+## Lesson 19
+
+Added an input field for the input of a new name to be put in the list of people.
+
+
+
 
 
 
