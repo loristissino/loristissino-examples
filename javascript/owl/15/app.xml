@@ -1,0 +1,28 @@
+<templates>
+  <!-- https://github.com/odoo/owl/blob/master/doc/reference/templates.md -->
+  <div t-name="Person">
+    <div>
+        <span class="id" t-ref="id"><t t-esc="props.id"></t></span> 
+        <span class="person" t-on-click="increaseClickCounter"><t t-esc="props.name" /></span>
+        <!--span class="counter"><t t-esc="clickCounter.value" /></span-->
+        <span class="counter"><t t-esc="counter" /></span>
+    </div>
+  </div>
+  
+  <div t-name="Hello">
+    <h1>Hello Owl</h1>
+    <div class="people-list">
+        <t t-foreach="people" t-as="person" t-key="person.id">
+            <Person name="person.name" id="person.id" />
+        </t>
+    </div>
+    <div class="cities-list">
+        <ol>
+        <t t-set="number" t-value="1001"/>
+        <t t-foreach="cities" t-as="city" t-key="city">
+            <li>(<t t-esc="number"/><t t-set="number" t-value="number +1"/>) <span class="city"><t t-esc="city"/></span></li>
+        </t>
+        </ol>
+    </div>
+  </div>
+</templates>

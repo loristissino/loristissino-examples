@@ -52,5 +52,26 @@ We introduce the concept of optional prop. Optional props can have a default val
 
 The magic begins. We use `clickCounter` instead of the `clickCount`. It is an object proxied by the framework via the `useState` feature of Owl. In the `increaseClickCounter` method we just take care of the application logic, because the view updates itself without us doing anything.
 
+## Lesson 12
 
+We want to keep the values of our variables in sync with the localStorage, so that when we reload the page we can reload them automatically. Instead of calling `useState` directly, we call a custom-designed generic `useStoredState` function, that takes care of what we need by calling Owl's `reactive`. 
  
+## Lesson 13
+
+In the localStorage, we want to use the id of the person insted of the name, so we define a new prop and use it when we create a new instance of the class. We also add a app-level prefix for the keys we use in the localStorage.
+
+## Lesson 14
+
+We use one of the Owl's components' [hooks](https://github.com/odoo/owl/blob/master/doc/reference/component.md#lifecycle) to show (in the console) that a view of a person has been updated. This could be useful.
+
+## Lesson 15
+
+We use a `ref` in the template in order to be able to change a property of the referred element when an event occurs.
+
+## Lesson 16
+
+We want to update an element on the Root component when an event occurs in the Person component. We therefore define a prop in the Person component that is the function to be called.
+
+
+
+
