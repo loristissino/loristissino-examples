@@ -72,6 +72,16 @@ We use a `ref` in the template in order to be able to change a property of the r
 
 We want to update an element on the Root component when an event occurs in the Person component. We therefore define a prop in the Person component that is the function to be called.
 
+## Lesson 17
+
+We centralize the management of the list of people in the Root container. The listener for the click event must call a function that is defined in the Root component and passed as a prop. The localStorage now mantains all the data of the array in one item. Much better!
+
+## Lesson 18
+
+Added a Delete button that allows to remove a person from the list.
+
+
+
 
 
 
