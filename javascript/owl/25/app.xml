@@ -1,0 +1,44 @@
+<templates>
+    <!-- https://github.com/odoo/owl/blob/master/doc/reference/templates.md -->
+    <div t-name="Account">
+        <div t-att-id="props.account.id">
+            <span class="id" t-ref="id"><t t-esc="props.account.id"></t></span> 
+            <span class="name"><t t-esc="props.account.name" /></span>
+            <span class="amount" t-if="props.account.amount > 0">€ <t t-esc="props.account.amount" /></span>
+            <span class="delete" title="Delete this account" t-on-click="deleteAccount" t-if="isDeletable">🗑 </span>
+        </div>
+    </div>
+
+    <div t-name="Transfers">
+        <h1>Accounts and transfers</h1>
+        <div class="account-list">
+            <t t-foreach="accounts" t-as="account" t-key="account.id">
+                <Account account="account" onDelete.bind="deleteAccount" />
+            </t>
+        </div>
+        <input t-ref="newAccount" type="text" id="account" placeholder="Account to add" t-on-keyup="addAccount"/>
+        <hr/>
+        <SelectionBox label="'From account'" id="'sourceAccountId'" values="accounts" />
+        <SelectionBox label="'To account'" id="'targetAccountId'" values="accounts" />
+        <input t-ref="amount" type="number" id="amount" min="0" max="1000" t-on-keyup="amount_keyup" placeholder="Amount"/>
+        <button t-ref="transfer" t-on-click="transfer" t-on-keyup="transfer_click" t-att-disabled="amountState.amountOK ? '': 'disabled'">Transfer</button>
+        <div id="message" t-ref="message"></div>
+        
+        <hr/>
+        
+        <button t-ref="save" t-on-click="save">Save</button>
+        <button t-ref="load" t-on-click="load">Load</button>
+        <button t-ref="unregister" t-on-click="unregister" t-att-disabled="remoteStore.url=='' ? 'disabled': ''">Unregister</button>
+                
+    </div>
+    
+    <div t-name="SelectionBox">
+        <label t-att-for="props.id"><t t-esc="props.label" /></label> 
+        <select t-att-id="props.id">
+            <t t-foreach="props.values" t-as="value" t-key="value.id">
+                <option t-att-value="value.id"><t t-esc="value.name" /></option>
+            </t>
+        </select>
+    </div>
+    
+</templates>

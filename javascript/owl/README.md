@@ -100,8 +100,12 @@ Added the component `SelectionBox` in order to show the source and the target of
 
 Added the basic functionalities required for the money transfer.
 
+## Lesson 24
+
+Added a check to enable / disable the transfer button according to the value of the amount field.
+
+## Lesson 25
+
+Added the functionality for storing the data into an external store and for retrieving the stored data.
  
-
-
-
-
+Changed the keybinding of the amount field in order to let tranfers to happen when enter is pressed.
