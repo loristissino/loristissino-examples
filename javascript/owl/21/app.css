@@ -1,0 +1,32 @@
+body {
+    background-color: #90EE90;
+    font-family: Verdana, Arial, sans-serif;
+    padding: 30px;
+}
+span.name {
+    background-color: #ADD8E6;
+}
+
+span.id {
+    margin-right: 10px;
+}
+
+.highlighted {
+    background-color: yellow;
+}
+
+span.amount {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+span.delete {
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}

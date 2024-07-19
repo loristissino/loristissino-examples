@@ -88,7 +88,19 @@ Added an input field for the input of a new name to be put in the list of people
 
 Removed buttons for a more pleaseant look.
 
+## Lesson 21
 
+Changed the code to manage something a little different: a list of accounts (with name and amount).
+
+## Lesson 22
+
+Added the component `SelectionBox` in order to show the source and the target of the transfer.
+
+## Lesson 23
+
+Added the basic functionalities required for the money transfer.
+
+ 
 
 
 
