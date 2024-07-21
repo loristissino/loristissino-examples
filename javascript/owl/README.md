@@ -109,3 +109,11 @@ Added a check to enable / disable the transfer button according to the value of 
 Added the functionality for storing the data into an external store and for retrieving the stored data.
  
 Changed the keybinding of the amount field in order to let tranfers to happen when enter is pressed.
+
+## Lesson 26
+
+Added a `dirty` prop to enable / disable the Save button. Added a hidden feature: new names can be associated with an amount (use "John: 300" syntax).
+
+## Lesson 27
+
+Added the possibility of editing the names in the list, by using the `contenteditable` property in HTML5.

@@ -22,7 +22,7 @@ class SelectionBox extends Component {
 
 class Account extends Component {
     static template = "Account";
-    static props = ["account", "onDelete" ]; 
+    static props = ["account", "onDelete", "onChange"]; 
     idRef = useRef("id");
     
     setup() {
@@ -35,10 +35,14 @@ class Account extends Component {
         this.props.onDelete(ev.target.parentElement.id);
     }
     
+    rename(ev) {
+        let newname = ev.target.innerHTML.trim().replaceAll(/\<br\>/g, '');
+        this.props.onChange(ev.target.parentElement.id, newname);
+    }
+    
     get isDeletable() {
         return this.props.account.amount == 0;
     }
-            
 }
 
 class Root extends Component {
@@ -67,26 +71,55 @@ class Root extends Component {
         });
         
         this.amountState = useState({ amountOK: false} );
+        this.dirty = useState({lastUpdate: false});
     }
 
     deleteAccount(id) {
         const index = this.accounts.findIndex(p => p.id == id);
         if (this.accounts[index].amount == 0) {
             this.accounts.splice(index, 1);
+            this.dirty.lastUpdate = Date.now();
         }
     }
     
-    addAccount(ev) {
+    changeName(id, name) {
+        const index = this.accounts.findIndex(p => p.id == id);
+        if (name) {
+            this.accounts[index].name=name;
+            this.dirty.lastUpdate = Date.now();
+        }
+    }
+    
+    newAccount_keypress(ev) {
         // if ENTER has been pressed...
         if (ev.key === 'Enter') {
-            const maxIndex = Math.max(...this.accounts.map(p=>p.id), 0);
-            let name = this.newAccountRef.el.value.trim();
-            if (name) {
-                this.accounts.push({id: maxIndex+1, name: name, amount: 0});
-            }
-            this.newAccountRef.el.value = '';
-            this.newAccountRef.el.focus();
+            this.addAccount();
         }
+    }
+    
+    newAccount_click() {
+        this.addAccount();
+    }
+    
+    addAccount() {
+        let name = this.newAccountRef.el.value.trim();
+        if (name) {
+            const maxIndex = Math.max(...this.accounts.map(p=>p.id), 0);
+            let account = {id: maxIndex+1, name: name, amount: 0};
+            let parts = name.split(':');
+            if (parts.length>1) {
+                console.log(parts);
+                account.name = parts[0].trim();
+                account.amount = parseInt(parts[1].trim());
+                if (!Number.isFinite(account.amount)) {
+                    account.amount = 0;
+                }
+            }
+            this.accounts.push(account);
+        }
+        this.newAccountRef.el.value = '';
+        this.newAccountRef.el.focus();
+        this.dirty.lastUpdate = Date.now();
     }
     
     transfer_click() {
@@ -120,6 +153,7 @@ class Root extends Component {
         // everything ok
         this.accounts[sourceIndex].amount -= amount;
         this.accounts[targetIndex].amount += amount;
+        this.dirty.lastUpdate = Date.now();
         this.showMessage(`The amount (€ ${amount}) has been successfully transferred.`);
     }
     
@@ -150,6 +184,7 @@ class Root extends Component {
                 let result = await response.json();
                 this.remoteStore.id = result.id;
                 this.showMessage(`Saved with id ${this.remoteStore.id}.`);
+                this.dirty.lastUpdate = false;
             }
             else {
                 this.showMessage(`Not saved.`, 'error');
@@ -178,6 +213,7 @@ class Root extends Component {
                 let result = await response.json();
                 this.accounts.length = 0;  // a quick way to remove all the data from the array
                 result.forEach((account) => {this.accounts.push(account);});
+                this.dirty.lastUpdate = false;
                 this.showMessage(`Data with id ${this.remoteStore.id} loaded.`);
             }
             else {
