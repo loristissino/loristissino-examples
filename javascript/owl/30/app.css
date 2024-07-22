@@ -1,0 +1,65 @@
+body {
+    background-color: #90EE90;
+    font-family: Verdana, Arial, sans-serif;
+    padding: 30px;
+}
+span.name {
+    background-color: #ADD8E6;
+}
+
+span.name br {
+    display: none;
+}
+
+span.id {
+    margin-right: 10px;
+}
+
+.highlighted {
+    background-color: yellow;
+}
+
+span.amount {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+label {
+    padding-right: 10px;
+}
+
+input[type=number] {
+    text-align: right;
+}
+
+#message {
+    color: green;
+}
+#message.error {
+    color: red;
+}
+
+
+span.emoji {
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+#credits {
+    font-size: 0.5em;
+    font-style: italic;
+}

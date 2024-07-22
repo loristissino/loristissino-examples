@@ -124,4 +124,8 @@ Enriched the selection box: now, if the number of items is greater than a certai
 
 ## Lesson 29
 
-Added a shareLink.
+Added a shareLink (just a proof-of-concept at the moment).
+
+## Lesson 30
+
+Just added a header and a footer.
