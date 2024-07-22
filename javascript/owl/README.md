@@ -128,4 +128,8 @@ Added a shareLink (just a proof-of-concept at the moment).
 
 ## Lesson 30
 
-Just added a header and a footer.
+Added a header and a footer, a manifest file, some icons, etc. in order to start the development as a [Progressive Web App](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps).
+
+___
+
+Money icons by [Freepik - Flaticon](https://www.flaticon.com/free-icons/money)
