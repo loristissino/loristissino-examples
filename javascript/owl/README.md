@@ -117,3 +117,11 @@ Added a `dirty` prop to enable / disable the Save button. Added a hidden feature
 ## Lesson 27
 
 Added the possibility of editing the names in the list, by using the `contenteditable` property in HTML5.
+
+## Lesson 28
+
+Enriched the selection box: now, if the number of items is greater than a certain number, it switches to an input field with a preloaded datalist.
+
+## Lesson 29
+
+Added a shareLink.
